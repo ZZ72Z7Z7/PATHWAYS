@@ -18,7 +18,7 @@
     --font-body:'Outfit',sans-serif;
     --font-display:'Bebas Neue',sans-serif;
   }
-  html{font-size:16px;scroll-behavior:smooth}
+  html{font-size:20px;scroll-behavior:smooth}
   body{font-family:var(--font-body);font-weight:400;color:var(--navy);background:var(--ice);min-height:100vh;display:flex;flex-direction:column}
 
   /* === HEADER === */
@@ -28,7 +28,7 @@
   .site-header h1{font-family:var(--font-display);font-weight:400;font-size:1.4rem;letter-spacing:.04em;line-height:1;white-space:nowrap}
   .site-header h1 a{color:inherit;text-decoration:none;cursor:pointer}
   .site-nav{display:flex;align-items:center;gap:.25rem;margin-left:auto}
-  .site-nav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.03em;padding:.4rem .65rem;border-radius:var(--r);transition:color .15s,background .15s}
+  .site-nav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:lowercase;padding:.4rem .65rem;border-radius:var(--r);transition:color .15s,background .15s}
   .site-nav a:hover,.site-nav a.active{color:var(--white);background:rgba(255,255,255,.12)}
 
   /* === HERO === */
@@ -36,9 +36,9 @@
   .hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('grad-v1-arts-education-1340x638.jpg') center/cover no-repeat;z-index:0}
   .hero-banner::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,38,71,.5);z-index:1}
   .hero-banner .hero-text{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem}
-  .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4.5rem;letter-spacing:.03em;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.3)}
-  .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:620px;text-align:center;margin-top:.75rem;text-shadow:0 1px 8px rgba(0,0,0,.3)}
-  .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.9rem 2rem;font-family:var(--font-body);font-size:.95rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
+  .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4rem;letter-spacing:.03em;line-height:1.05;text-shadow:0 2px 20px rgba(0,0,0,.3);max-width:1250px}
+  .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:620px;text-align:center;margin:.75rem auto 0;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+  .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.9rem 2rem;font-family:var(--font-body);font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
   .hero-btn:hover{opacity:.9;transform:translateY(-2px)}
   .hero-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
@@ -76,7 +76,7 @@
   .step-screen.active{display:block}
   @keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-  .back-btn{display:inline-flex;align-items:center;gap:.3rem;background:none;border:none;font-family:var(--font-body);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,38,71,.45);cursor:pointer;padding:0;margin-bottom:1.5rem;transition:color .15s}
+  .back-btn{display:inline-flex;align-items:center;gap:.3rem;background:none;border:none;font-family:var(--font-body);font-size:.624rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,38,71,.45);cursor:pointer;padding:0;margin-bottom:1.5rem;transition:color .15s}
   .back-btn:hover{color:var(--blue)}
   .back-btn svg{width:14px;height:14px;stroke:currentColor}
 
@@ -86,10 +86,10 @@
 
   /* Options */
   .options{display:flex;flex-direction:column}
-  .options button{display:flex;align-items:center;justify-content:center;width:100%;text-align:center;background:var(--white);border:2px solid rgba(0,38,71,.12);border-top:1px solid rgba(0,38,71,.08);border-radius:0;padding:1.1rem 1.4rem;font-family:var(--font-body);font-size:1.1rem;font-weight:600;color:var(--navy);cursor:pointer;transition:border-color .15s,background .15s,color .15s;line-height:1.35;flex-direction:column}
+  .options button{display:flex;align-items:center;justify-content:center;width:100%;text-align:center;background:var(--white);border:2px solid rgba(0,38,71,.12);border-top:1px solid rgba(0,38,71,.08);border-radius:0;padding:1.1rem 1.4rem;font-family:var(--font-body);font-size:.88rem;font-weight:600;color:var(--navy);cursor:pointer;transition:border-color .15s,background .15s,color .15s;line-height:1.35;flex-direction:column}
   .options button:last-child{border-radius:0 0 var(--r) var(--r)}
   .options button:hover{border-color:var(--blue);background:var(--ice);color:var(--blue);z-index:1;position:relative}
-  .options button .opt-sub{display:block;font-size:.8rem;font-weight:400;color:rgba(0,38,71,.45);margin-top:2px}
+  .options button .opt-sub{display:block;font-size:.64rem;font-weight:400;color:rgba(0,38,71,.45);margin-top:2px}
   .options button:hover .opt-sub{color:var(--blue)}
 
   /* Video */
@@ -121,9 +121,9 @@
   .rc-tag{font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .5rem;border-radius:100px;background:var(--ice);color:var(--blue)}
   .disclaimer-box{margin-top:2rem;padding:1rem 1.15rem;background:var(--white);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;font-size:.8rem;line-height:1.55;color:var(--blue)}
   .actions-row{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
-  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
+  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
   .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
-  .btn-secondary{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--navy);border:2px solid rgba(0,38,71,.15);border-radius:var(--r);padding:.7rem 1.3rem;font-family:var(--font-body);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .15s,color .15s}
+  .btn-secondary{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--navy);border:2px solid rgba(0,38,71,.15);border-radius:var(--r);padding:.7rem 1.3rem;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .15s,color .15s}
   .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
 
   /* === RESOURCES LINKS === */
@@ -154,7 +154,7 @@
     .resources-grid{grid-template-columns:1fr}
     .stats-row{grid-template-columns:repeat(2,1fr)}
     .hero-banner{height:640px}
-    .hero-banner .hero-text h2{font-size:3rem}
+    .hero-banner .hero-text h2{font-size:2.4rem}
     .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
     .site-nav{display:none}
     .step-screen{padding:2rem 1.25rem}
@@ -184,7 +184,7 @@
 <!-- HERO -->
 <div class="hero-banner" id="heroBanner">
   <div class="hero-text">
-    <h2>Become an Arts Educator</h2>
+    <h2>Find Your Path to Becoming an Arts Educator</h2>
     <p class="hero-sub">Our interactive survey connects you with resources tailored to your personal goals based on your current skills, certifications, and experience</p>
   </div>
   <button class="hero-btn" onclick="currentStep=0; render();">Get Started <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
