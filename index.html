@@ -22,10 +22,10 @@
   body{font-family:var(--font-body);font-weight:400;color:var(--navy);background:var(--ice);min-height:100vh;display:flex;flex-direction:column}
 
   /* === HEADER === */
-  .site-header{background:transparent;color:var(--white);padding:0 2rem;position:absolute;top:0;left:0;right:0;z-index:100;transition:background .3s}
-  .site-header.solid{background:var(--navy);position:relative}
-  .site-header-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;height:160px}
-  .site-header h1{font-family:var(--font-display);font-weight:400;font-size:1.4rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-align:center}
+  .site-header{background:var(--navy);color:var(--white);padding:0 2rem;position:fixed;top:0;left:0;right:0;z-index:100;transform:translateY(-100%);transition:transform .35s ease;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+  .site-header.visible{transform:translateY(0)}
+  .site-header-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+  .site-header h1{font-family:var(--font-display);font-weight:400;font-size:1.1rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-align:left}
   .site-header h1 a{color:inherit;text-decoration:none;cursor:pointer}
   .site-nav{display:flex;align-items:center;gap:.25rem}
   .site-nav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.975rem;font-weight:500;letter-spacing:.05em;text-transform:lowercase;padding:.4rem .65rem;border-radius:var(--r);transition:color .15s,background .15s}
@@ -33,11 +33,11 @@
 
   /* === HERO === */
   .hero-banner{position:relative;width:100%;height:920px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem;background:var(--navy)}
-  .hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('grad-v1-arts-education-1340x638.jpg') center/cover no-repeat;z-index:0}
+  .hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('AdobeStock_315221705_Preview_v2.jpeg') center/cover no-repeat;z-index:0}
   .hero-banner::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,38,71,.5);z-index:1}
   .hero-banner .hero-text{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem}
-  .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4rem;letter-spacing:.03em;line-height:1.05;text-shadow:0 2px 20px rgba(0,0,0,.3);max-width:1250px}
-  .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:450px;text-align:center;margin:.75rem auto 0;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+  .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4rem;letter-spacing:.03em;line-height:1.05;max-width:1250px}
+  .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:450px;text-align:center;margin:.75rem auto 0}
   .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.9rem 2rem;font-family:var(--font-body);font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
   .hero-btn:hover{opacity:.9;transform:translateY(-2px)}
   .hero-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
@@ -52,7 +52,6 @@
   .audience-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem}
   .audience-card{background:var(--white);border:1px solid rgba(0,38,71,.1);border-radius:var(--r);padding:1.75rem 1.25rem;text-align:center;transition:transform .15s,box-shadow .15s}
   .audience-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,38,71,.08)}
-  .audience-card .card-icon{width:52px;height:52px;background:var(--ice);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
   .audience-card h4{font-family:var(--font-display);font-size:1.2rem;letter-spacing:.04em;margin-bottom:.5rem;color:var(--navy)}
   .audience-card p{font-size:.82rem;color:var(--blue);line-height:1.5}
 
@@ -157,7 +156,7 @@
     .hero-banner .hero-text h2{font-size:2.4rem}
     .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
     .site-nav{display:none}
-    .site-header-inner{height:80px}
+    .site-header-inner{height:56px}
     .step-screen{padding:2rem 1.25rem}
   }
   @media print{
@@ -177,7 +176,7 @@
     <h1><a href="#" onclick="goHome(event)">Pathways for Arts Educator Development</a></h1>
     <nav class="site-nav" id="siteNav">
       <a href="#about" data-nav="about">About</a>
-      <a href="#resources-links" data-nav="resources">Resources</a>
+      <a href="#why-teach" data-nav="why">Why Teach</a>
       <a href="#" data-nav="contact">Contact</a>
     </nav>
   </div>
@@ -186,7 +185,7 @@
 <!-- HERO -->
 <div class="hero-banner" id="heroBanner">
   <div class="hero-text">
-    <h2>Find Your Path<br>as an Arts Educator</h2>
+    <h2>Find Your Path<br>as an Arts Educator<br>in California</h2>
     <p class="hero-sub">Get connected to resources tailored to your personal goals and current skills/experience </p>
   </div>
   <button class="hero-btn" onclick="currentStep=0; render();">Start Now <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
@@ -200,8 +199,8 @@
     <div class="content-wrap">
       <h2 class="section-title">About This Initiative</h2>
       <div class="coalition-text">
-        <p>Pathways for Arts Educator Development was created to address the growing shortage of qualified arts educators in California's public schools. This initiative brings together universities, county arts commissions, teaching artist organizations, and advocacy groups to provide clear, accessible pathways into arts education careers.</p>
-        <p style="margin-top:1rem;">Whether you want to become a credentialed classroom teacher or work as a teaching artist in schools and community settings, this tool helps you find the programs, funding, and professional networks that match your background and goals.</p>
+        <p>Pathways for Arts Educator Development was created in response to Proposition 28, the Arts and Music in Schools (AMS) Act, to address the shortage of qualified arts educators in California's public schools. This initiative brings together universities, professional associations, community-based organizations and advocacy groups to illuminate clear, accessible pathways into arts education careers.</p>
+        <p style="margin-top:1rem;">Whether you want to become a credentialed classroom teacher or work as a teaching artist in schools and community settings, this tool helps you find programs, resources and professional development opportunities that match your background and support your goals.</p>
       </div>
     </div>
   </div>
@@ -209,11 +208,10 @@
   <!-- Stats -->
   <div class="section" style="background:var(--ice);">
     <div class="content-wrap">
-      <div class="stats-row">
-        <div class="stat-item"><div class="stat-number">92%</div><div class="stat-label">Job Satisfaction</div></div>
-        <div class="stat-item"><div class="stat-number">120K+</div><div class="stat-label">Arts Teachers in U.S.</div></div>
-        <div class="stat-item"><div class="stat-number">$62K</div><div class="stat-label">National Avg. Salary</div></div>
-        <div class="stat-item"><div class="stat-number">97%</div><div class="stat-label">Employment Rate</div></div>
+      <h2 class="section-title">California Proposition 28</h2>
+      <div class="stats-row" style="grid-template-columns:repeat(2,1fr);max-width:680px;margin:0 auto;">
+        <div class="stat-item"><div class="stat-number">$750M+</div><div class="stat-label">For Arts Education Staffing Per Year</div></div>
+        <div class="stat-item"><div class="stat-number">5,400+</div><div class="stat-label">New Arts Educators Needed</div></div>
       </div>
     </div>
   </div>
@@ -225,27 +223,22 @@
       <p class="section-subtitle">Whether you're just starting out or transitioning into arts education, we have resources tailored to where you are right now.</p>
       <div class="audience-grid">
         <div class="audience-card">
-          <div class="card-icon"><svg width="24" height="24" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
           <h4>Students</h4>
           <p>Explore what it takes to become an arts educator while you're still in high school or community college.</p>
         </div>
         <div class="audience-card">
-          <div class="card-icon"><svg width="24" height="24" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
           <h4>Undergraduates</h4>
           <p>Navigate your degree, student teaching, and credentialing process with confidence.</p>
         </div>
         <div class="audience-card">
-          <div class="card-icon"><svg width="24" height="24" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <h4>Working Artists</h4>
           <p>Transition from practicing artist to teaching artist or credentialed educator.</p>
         </div>
         <div class="audience-card">
-          <div class="card-icon"><svg width="24" height="24" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
           <h4>Parents &amp; Counselors</h4>
           <p>Support the aspiring arts educators in your life with the right information and resources.</p>
         </div>
         <div class="audience-card">
-          <div class="card-icon"><svg width="24" height="24" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
           <h4>Current Teachers</h4>
           <p>Add an arts credential, find professional development, or recruit the next generation of arts educators.</p>
         </div>
@@ -269,54 +262,9 @@
     </div>
   </div>
 
-  <!-- Resources -->
-  <div class="section" style="background:var(--white);" id="resources-links">
-    <div class="content-wrap">
-      <h2 class="section-title">Resources</h2>
-      <p class="section-subtitle">Organizations and agencies supporting arts education in California and nationwide.</p>
-      <div class="resources-grid">
-        <div class="res-link-group">
-          <h4>California Agencies</h4>
-          <ul>
-            <li><a href="https://www.ctc.ca.gov/" target="_blank" rel="noopener">California Commission on Teacher Credentialing (CTC)</a><span>Credential requirements, approved programs, and exam information.</span></li>
-            <li><a href="https://www.cde.ca.gov/ci/vp/" target="_blank" rel="noopener">California Dept. of Education — Visual &amp; Performing Arts</a><span>State standards, frameworks, and curriculum resources for arts education.</span></li>
-            <li><a href="https://arts.ca.gov/" target="_blank" rel="noopener">California Arts Council</a><span>Statewide grants, artist-in-schools programs, and arts education initiatives.</span></li>
-            <li><a href="https://www.csac.ca.gov/" target="_blank" rel="noopener">California Student Aid Commission</a><span>Financial aid including the Golden State Teacher Grant Program.</span></li>
-          </ul>
-        </div>
-        <div class="res-link-group">
-          <h4>Advocacy &amp; Professional Organizations</h4>
-          <ul>
-            <li><a href="https://www.artsed411.org/" target="_blank" rel="noopener">California Alliance for Arts Education</a><span>Statewide advocacy, policy updates, and professional resources.</span></li>
-            <li><a href="https://www.artsforla.org/" target="_blank" rel="noopener">Arts for LA</a><span>Arts education advocacy and networking across Los Angeles County.</span></li>
-            <li><a href="https://teachingartistsguild.org/" target="_blank" rel="noopener">Teaching Artists Guild</a><span>National network with job boards, training, and community for teaching artists.</span></li>
-            <li><a href="https://www.americansforthearts.org/" target="_blank" rel="noopener">Americans for the Arts</a><span>National research, advocacy, and resources for arts education.</span></li>
-          </ul>
-        </div>
-        <div class="res-link-group">
-          <h4>Federal Resources</h4>
-          <ul>
-            <li><a href="https://www.arts.gov/" target="_blank" rel="noopener">National Endowment for the Arts</a><span>Federal grants, research, and national arts education initiatives.</span></li>
-            <li><a href="https://studentaid.gov/understand-aid/types/grants/teach" target="_blank" rel="noopener">Federal TEACH Grant Program</a><span>Grants for students completing coursework to become teachers.</span></li>
-            <li><a href="https://www.ed.gov/" target="_blank" rel="noopener">U.S. Department of Education</a><span>Federal policy, data, and programs supporting K-12 education.</span></li>
-          </ul>
-        </div>
-        <div class="res-link-group">
-          <h4>Research &amp; Networks</h4>
-          <ul>
-            <li><a href="https://www.ecs.org/initiatives-and-research/education-commission-of-the-states/arts-education-partnership/" target="_blank" rel="noopener">Arts Education Partnership</a><span>National research, policy briefs, and state-by-state data.</span></li>
-            <li><a href="https://teachingartists.com/" target="_blank" rel="noopener">Association of Teaching Artists</a><span>Annual conference, professional development, and community.</span></li>
-            <li><a href="https://www.naea-reston.org/" target="_blank" rel="noopener">National Art Education Association</a><span>Professional development, publications, and advocacy for visual arts educators.</span></li>
-            <li><a href="https://nafme.org/" target="_blank" rel="noopener">National Association for Music Education</a><span>Resources, standards, and advocacy for music educators.</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<main id="app"></main>
+<main id="app" style="padding-top:64px"></main>
 
 <footer>
   <div class="footer-inner">
@@ -367,22 +315,27 @@ const arrow='<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-line
 function setActiveNav(id){document.querySelectorAll('.site-nav a').forEach(a=>a.classList.remove('active'));const t=document.querySelector('.site-nav a[data-nav="'+id+'"]');if(t)t.classList.add('active');}
 function goHome(e){if(e)e.preventDefault();currentStep=-1;render();}
 
+function updateHeader(){
+  const hdr=document.querySelector('.site-header');
+  if(currentStep!==-1)hdr.classList.add('visible');
+  else hdr.classList.remove('visible');
+}
+
 function render(){
   const app=document.getElementById('app');
   const hero=document.getElementById('heroBanner');
   const home=document.getElementById('homeSections');
-  const hdr=document.querySelector('.site-header');
 
   if(currentStep===-1){
     hero.style.display='';home.style.display='';
     app.innerHTML='';
-    hdr.classList.remove('solid');
+    updateHeader();
     setActiveNav('');
     return;
   }
 
   hero.style.display='none';home.style.display='none';
-  hdr.classList.add('solid');
+  updateHeader();
   setActiveNav('');
 
   if(currentStep>=STEPS.length)renderResults(app);
@@ -440,13 +393,6 @@ function loadVideo(){
   if(c)c.innerHTML='<iframe src="https://www.youtube.com/embed/nhu_yPjlqSI?autoplay=1&modestbranding=1&rel=0&fs=0&iv_load_policy=3&color=white&disablekb=0&showinfo=0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
 }
 
-window.addEventListener('scroll',function(){
-  if(currentStep!==-1)return;
-  const hdr=document.querySelector('.site-header');
-  const hero=document.getElementById('heroBanner');
-  if(window.scrollY>hero.offsetHeight-60)hdr.classList.add('solid');
-  else hdr.classList.remove('solid');
-});
 
 render();
 </script>
