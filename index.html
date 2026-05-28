@@ -67,10 +67,18 @@
   .stat-item .stat-number{font-family:var(--font-display);font-size:3rem;color:var(--blue);line-height:1}
   .stat-item .stat-label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,38,71,.5);margin-top:.3rem}
 
+  /* === FIND YOUR PATH === */
+  .portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;max-width:900px;margin:0 auto}
+  .portrait{aspect-ratio:9/16;background:linear-gradient(160deg,var(--blue),var(--navy));border-radius:var(--r)}
+  .fyp-cta{text-align:center;margin:2.5rem 0}
+  .fyp-cta .hero-btn{margin-top:0}
+
   /* === ABOUT === */
   .coalition-text{max-width:750px;margin:0 auto;text-align:center;font-size:.92rem;line-height:1.7;color:var(--blue)}
 
   /* === SURVEY STEPS === */
+  #app{padding-top:64px}
+  #app:empty{padding-top:0}
   .step-screen{max-width:660px;width:100%;margin:0 auto;padding:2.5rem 2rem 3rem;display:none;animation:stepIn .35s ease}
   .step-screen.active{display:block}
   @keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -145,12 +153,14 @@
   @media(max-width:1080px){
     .audience-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem}
     .audience-card{width:calc(33.333% - 1rem);min-width:0}
+    .portrait-grid{grid-template-columns:repeat(2,1fr);max-width:460px}
   }
   @media(max-width:720px){
     .audience-grid{display:flex;flex-direction:column;align-items:stretch}
     .audience-card{width:100%}
     .why-grid{grid-template-columns:1fr}
     .resources-grid{grid-template-columns:1fr}
+    .portrait-grid{grid-template-columns:1fr;max-width:240px}
     .stats-row{grid-template-columns:repeat(2,1fr)}
     .hero-banner{height:640px}
     .hero-banner .hero-text h2{font-size:2.4rem}
@@ -199,17 +209,27 @@
     <div class="content-wrap">
       <h2 class="section-title">About This Initiative</h2>
       <div class="coalition-text">
-        <p>Pathways for Arts Educator Development was created in response to Proposition 28, the Arts and Music in Schools (AMS) Act, to address the shortage of qualified arts educators in California's public schools. This initiative brings together universities, professional associations, community-based organizations and advocacy groups to illuminate clear, accessible pathways into arts education careers.</p>
-        <p style="margin-top:1rem;">Whether you want to become a credentialed classroom teacher or work as a teaching artist in schools and community settings, this tool helps you find programs, resources and professional development opportunities that match your background and support your goals.</p>
+        <p>Pathways for Arts Educator Development was created in response to <a href="https://www.cde.ca.gov/eo/in/prop28artsandmusicedfunding.asp">Proposition 28 (The Arts and Music in Schools Act)</a>, to address the shortage of qualified arts educators in California's public schools. This initiative brings together universities, professional associations, community-based organizations and advocacy groups to illuminate clear, accessible pathways into arts education careers.</p>
+        <p style="margin-top:1rem;">Whether you want to become a credentialed classroom teacher or work as a teaching artist in schools and community settings, this tool will help you find programs, resources and professional development opportunities that match your background and support your goals.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="section" style="background:var(--ice);">
+    <div class="content-wrap">
+      <h2 class="section-title">California Proposition 28</h2>
+      <div class="stats-row" style="grid-template-columns:repeat(2,1fr);max-width:680px;margin:0 auto;">
+        <div class="stat-item"><div class="stat-number">$750M+</div><div class="stat-label">For Arts Education Staffing Per Year</div></div>
+        <div class="stat-item"><div class="stat-number">5,400+</div><div class="stat-label">New Arts Educators Needed</div></div>
       </div>
     </div>
   </div>
 
   <!-- Who Is This For -->
-  <div class="section" style="background:var(--ice);">
+  <div class="section" style="background:var(--white);">
     <div class="content-wrap">
-      <h2 class="section-title">Who Is This For?</h2>
-      <p class="section-subtitle">Whether you're just starting out or transitioning into arts education, we have resources tailored to where you are right now.</p>
+      <h2 class="section-title" style="margin-bottom:2.5rem;">Who Is This For?</h2>
       <div class="audience-grid">
         <div class="audience-card">
           <h4>Students</h4>
@@ -236,10 +256,9 @@
   </div>
 
   <!-- Why Teach Arts -->
-  <div class="section" style="background:var(--white);" id="why-teach">
+  <div class="section" style="background:var(--ice);" id="why-teach">
     <div class="content-wrap">
-      <h2 class="section-title">Why Teach the Arts?</h2>
-      <p class="section-subtitle">Arts education transforms students and communities. Here's why teaching it is one of the most rewarding careers you can choose.</p>
+      <h2 class="section-title" style="margin-bottom:2.5rem;">Why Teach the Arts?</h2>
       <div class="why-grid">
         <div class="why-card"><h4>Share Your Passion</h4><p>Channel your love of visual arts, music, dance, theater, or media arts into daily work that energizes you.</p></div>
         <div class="why-card"><h4>Build Community</h4><p>Connect with students, families, and fellow artists in schools and community settings.</p></div>
@@ -251,20 +270,26 @@
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="section" style="background:var(--ice);">
+  <!-- Find Your Path -->
+  <div class="section" style="background:var(--white);padding-bottom:6rem;">
     <div class="content-wrap">
-      <h2 class="section-title">California Proposition 28</h2>
-      <div class="stats-row" style="grid-template-columns:repeat(2,1fr);max-width:680px;margin:0 auto;">
-        <div class="stat-item"><div class="stat-number">$750M+</div><div class="stat-label">For Arts Education Staffing Per Year</div></div>
-        <div class="stat-item"><div class="stat-number">5,400+</div><div class="stat-label">New Arts Educators Needed</div></div>
+      <h2 class="section-title">Find Your Path</h2>
+      <p class="section-subtitle">Our interactive questionnaire will direct you to resources matching your skills, interests, and experience, with guidance from experienced professional arts educators working in your field.</p>
+      <div class="fyp-cta">
+        <button class="hero-btn" onclick="currentStep=0; render();">Start Now <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="portrait-grid">
+        <div class="portrait"></div>
+        <div class="portrait"></div>
+        <div class="portrait"></div>
+        <div class="portrait"></div>
       </div>
     </div>
   </div>
 
 </div>
 
-<main id="app" style="padding-top:64px"></main>
+<main id="app"></main>
 
 <footer>
   <div class="footer-inner">
