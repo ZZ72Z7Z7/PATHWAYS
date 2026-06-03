@@ -33,7 +33,7 @@
 
   /* === HERO === */
   .hero-banner{position:relative;width:100%;height:920px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem;background:var(--navy)}
-  .hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('AdobeStock_315221705_Preview_v2.jpeg') center/cover no-repeat;z-index:0}
+  .hero-banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('IMAGES/AdobeStock_315221705_Preview_v2.jpeg') center/cover no-repeat;z-index:0}
   .hero-banner::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,38,71,.5);z-index:1}
   .hero-banner .hero-text{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem}
   .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4rem;letter-spacing:.03em;line-height:1.05;max-width:1250px}
@@ -46,7 +46,7 @@
   .content-wrap{max-width:1100px;width:100%;margin:0 auto;padding:0 2rem}
   .section{padding:3.5rem 0}
   .section-title{font-family:var(--font-display);font-size:2.2rem;letter-spacing:.03em;text-align:center;margin-bottom:.5rem;color:var(--navy)}
-  .section-subtitle{text-align:center;color:var(--blue);font-size:.95rem;max-width:600px;margin:0 auto 2rem;line-height:1.6}
+  .section-subtitle{text-align:center;color:var(--blue);font-size:.95rem;max-width:600px;margin:0 auto 2rem;line-height:1.6;text-wrap:pretty}
 
   /* === AUDIENCE CARDS === */
   .audience-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem}
@@ -68,10 +68,16 @@
   .stat-item .stat-label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,38,71,.5);margin-top:.3rem}
 
   /* === FIND YOUR PATH === */
-  .portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;max-width:900px;margin:0 auto}
-  .portrait{aspect-ratio:9/16;background:linear-gradient(160deg,var(--blue),var(--navy));border-radius:var(--r)}
-  .fyp-cta{text-align:center;margin:2.5rem 0}
-  .fyp-cta .hero-btn{margin-top:0}
+  .fyp-frame{display:flex;flex-direction:column;width:100%;max-width:444px;margin:2.25rem auto 0;padding:12px;background:linear-gradient(160deg,#013a68,var(--navy));border:1px solid rgba(254,207,67,.35);border-radius:10px;box-shadow:0 14px 36px rgba(0,38,71,.28)}
+  .fyp-video{position:relative;display:flex;flex-direction:column;width:100%;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:var(--navy);container-type:inline-size}
+  .fyp-video .fyp-loop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .fyp-video::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 45% at 50% 65%,rgba(0,38,71,.55) 0%,rgba(0,38,71,.15) 55%,rgba(0,38,71,0) 75%)}
+  .fyp-video .fyp-overlay{position:absolute;inset:0;z-index:2}
+  .fyp-video .hero-btn{position:absolute;top:65%;left:50%;transform:translate(-50%,-50%);margin:0;justify-content:center;width:clamp(60cqi,39cqi + 86px,80cqi);font-size:clamp(.62rem,4cqi,.76rem);padding:clamp(.6rem,3.4cqi,.9rem) clamp(1rem,5cqi,1.75rem)}
+  @media (prefers-reduced-motion:reduce){
+    .fyp-video .fyp-loop{display:none}
+    .fyp-video{background:var(--navy) url('IMAGES/survey_preview_V1_thumb.png') center/cover no-repeat}
+  }
 
   /* === ABOUT === */
   .coalition-text{max-width:750px;margin:0 auto;text-align:center;font-size:.92rem;line-height:1.7;color:var(--blue)}
@@ -153,14 +159,12 @@
   @media(max-width:1080px){
     .audience-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem}
     .audience-card{width:calc(33.333% - 1rem);min-width:0}
-    .portrait-grid{grid-template-columns:repeat(2,1fr);max-width:460px}
   }
   @media(max-width:720px){
     .audience-grid{display:flex;flex-direction:column;align-items:stretch}
     .audience-card{width:100%}
     .why-grid{grid-template-columns:1fr}
     .resources-grid{grid-template-columns:1fr}
-    .portrait-grid{grid-template-columns:1fr;max-width:240px}
     .stats-row{grid-template-columns:repeat(2,1fr)}
     .hero-banner{height:640px}
     .hero-banner .hero-text h2{font-size:2.4rem}
@@ -274,15 +278,16 @@
   <div class="section" style="background:var(--white);padding-bottom:6rem;">
     <div class="content-wrap">
       <h2 class="section-title">Find Your Path</h2>
-      <p class="section-subtitle">Our interactive questionnaire will direct you to resources matching your skills, interests, and experience, with guidance from experienced professional arts educators working in your field.</p>
-      <div class="fyp-cta">
-        <button class="hero-btn" onclick="currentStep=0; render();">Start Now <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
-      </div>
-      <div class="portrait-grid">
-        <div class="portrait"></div>
-        <div class="portrait"></div>
-        <div class="portrait"></div>
-        <div class="portrait"></div>
+      <p class="section-subtitle">Our interactive questionnaire will direct you to resources matching your skills, interests, and experience, with guidance from experienced professional arts educators working in your&nbsp;field.</p>
+      <div class="fyp-frame">
+        <div class="fyp-video">
+          <video class="fyp-loop" autoplay loop muted playsinline poster="IMAGES/survey_preview_V1_thumb.png">
+            <source src="VIDEO/survey_preview_V1.mp4" type="video/mp4">
+          </video>
+          <div class="fyp-overlay">
+            <button class="hero-btn" onclick="currentStep=0; render();">Start Now <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
