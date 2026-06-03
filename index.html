@@ -29,7 +29,7 @@
   .hero-banner .hero-text{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem}
   .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4rem;letter-spacing:.03em;line-height:1.05;max-width:1250px}
   .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:450px;text-align:center;margin:.75rem auto 0}
-  .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.9rem 2rem;font-family:var(--font-body);font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
+  .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:1rem 2.5rem;font-family:var(--font-body);font-size:clamp(.9rem,1.6vw,1.2rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
   .hero-btn:hover{opacity:.9;transform:translateY(-2px)}
   .hero-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
@@ -40,7 +40,7 @@
   .section-subtitle{text-align:center;color:var(--blue);font-size:.95rem;max-width:600px;margin:0 auto 2rem;line-height:1.6;text-wrap:pretty}
 
   /* === AUDIENCE CARDS === */
-  .audience-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem}
+  .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
   .audience-card{background:var(--white);border:1px solid rgba(0,38,71,.1);border-radius:var(--r);padding:1.75rem 1.25rem;text-align:center;transition:transform .15s,box-shadow .15s}
   .audience-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,38,71,.08)}
   .audience-card h4{font-family:var(--font-display);font-size:1.2rem;letter-spacing:.04em;margin-bottom:.5rem;color:var(--navy)}
@@ -211,25 +211,16 @@
       <div class="audience-grid">
         <div class="audience-card">
           <h4>Students</h4>
-          <p>Explore what it takes to become an arts educator while you're still in high school or community college.</p>
+          <p>Explore the path to arts education—from high school through your degree and credential.</p>
         </div>
         <div class="audience-card">
-          <h4>Undergraduates</h4>
-          <p>Navigate your degree, student teaching, and credentialing process with confidence.</p>
+          <h4>Artists</h4>
+          <p>Bring your practice into the classroom as a teaching artist or credentialed educator.</p>
         </div>
         <div class="audience-card">
-          <h4>Working Artists</h4>
-          <p>Transition from practicing artist to teaching artist or credentialed educator.</p>
-        </div>
-        <div class="audience-card">
-          <h4>Parents &amp; Counselors</h4>
-          <p>Support the aspiring arts educators in your life with the right information and resources.</p>
-        </div>
-        <div class="audience-card">
-          <h4>Current Teachers</h4>
-          <p>Add an arts credential, find professional development, or recruit the next generation of arts educators.</p>
-        </div>
-      </div>
+          <h4>Teachers</h4>
+          <p>Add an arts credential or find professional development for your classroom.</p>
+        </div>      </div>
     </div>
   </div>
 
