@@ -55,7 +55,7 @@
   .quote-slide{grid-area:1/1;display:flex;align-items:center;gap:2rem;margin:0;opacity:0;pointer-events:none;transition:opacity .5s ease}
   .quote-slide.is-active{opacity:1;pointer-events:auto}
   .quote-photo{flex:0 0 auto}
-  .quote-photo img{display:block;width:150px;height:150px;border-radius:50%;object-fit:cover}
+  .quote-photo img{display:block;width:188px;height:188px;border-radius:50%;object-fit:cover}
   .quote-text{margin:0 0 1rem;font-size:1.05rem;line-height:1.6;color:var(--navy);font-style:italic}
   .quote-cite{font-size:.95rem;color:var(--navy)}
   .quote-cite strong{font-weight:700}
@@ -80,10 +80,6 @@
   .fyp-video .fyp-loop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
   .fyp-video::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 45% at 50% 65%,rgba(0,38,71,.55) 0%,rgba(0,38,71,.15) 55%,rgba(0,38,71,0) 75%)}
   .fyp-video .hero-btn{position:absolute;top:65%;left:50%;transform:translate(-50%,-50%);margin:0;justify-content:center;white-space:nowrap;min-width:66cqi;max-width:94cqi;font-size:clamp(1.05rem,6.9cqi,1.425rem);padding:clamp(.85rem,4.4cqi,1.25rem) clamp(.8rem,5.5cqi,1.9rem)}
-  @media (prefers-reduced-motion:reduce){
-    .fyp-video .fyp-loop{display:none}
-    .fyp-video{background:var(--navy) url('images/survey_preview_V1_thumb.jpg') center/cover no-repeat}
-  }
 
   /* === ABOUT === */
   .coalition-text{max-width:750px;margin:0 auto;text-align:center;font-size:.92rem;line-height:1.7;color:var(--blue)}
@@ -451,7 +447,6 @@ render();
 (function(){
   const slides=document.querySelectorAll('#heroSlides .hero-slide');
   if(slides.length<2)return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   let i=0;
   setInterval(function(){
     slides[i].classList.remove('is-active');
