@@ -139,15 +139,6 @@
   .btn-secondary{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--navy);border:2px solid rgba(0,38,71,.15);border-radius:var(--r);padding:.7rem 1.3rem;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .15s,color .15s}
   .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
 
-  /* === RESOURCES LINKS === */
-  .resources-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-  .res-link-group h4{font-family:var(--font-display);font-size:1.2rem;letter-spacing:.04em;color:var(--navy);margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold)}
-  .res-link-group ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-  .res-link-group li{display:flex;flex-direction:column}
-  .res-link-group li a{color:var(--blue);text-decoration:none;font-weight:600;font-size:.92rem;border-bottom:1px solid transparent;transition:border-color .15s;display:inline}
-  .res-link-group li a:hover{border-bottom-color:var(--blue)}
-  .res-link-group li span{font-size:.8rem;color:rgba(0,38,71,.7);line-height:1.45;margin-top:.15rem}
-
   /* === FOOTER === */
   footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center;font-size:.78rem;letter-spacing:.03em;margin-top:auto}
   footer a{color:var(--gold);text-decoration:none}
@@ -160,15 +151,10 @@
   .footer-inner .footer-contact{line-height:1.7;margin-bottom:2.5rem}
 
   /* === RESPONSIVE === */
-  @media(max-width:1080px){
-    .audience-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem}
-    .audience-card{width:calc(50% - 1rem);min-width:0}
-  }
   @media(max-width:720px){
     .audience-grid{display:flex;flex-direction:column;align-items:stretch}
     .audience-card{width:100%}
     .quote-slide{flex-direction:column;text-align:center;gap:1.25rem}
-    .resources-grid{grid-template-columns:1fr}
     .hero-banner{height:640px}
     .hero-banner .hero-text h2{font-size:2.4rem}
     .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
@@ -315,7 +301,7 @@
   <div class="section" style="background:var(--white);padding-bottom:7.2rem;">
     <div class="content-wrap">
       <h2 class="section-title">Find Your Path</h2>
-      <p class="section-subtitle">Our interactive questionnaire will direct you to resources matching your skills, interests, and experience, with guidance from experienced professional arts educators working in your&nbsp;field.</p>
+      <p class="section-subtitle">Our interactive questionnaire will direct you to resources matching your skills, interests, and experience, with guidance from experienced professional arts educators working in your field.</p>
       <div class="fyp-frame">
         <div class="fyp-video">
           <video class="fyp-loop" autoplay loop muted playsinline preload="metadata" poster="images/survey_preview_V1_thumb.jpg">
@@ -470,9 +456,8 @@ render();
   const dots=[...root.querySelectorAll('.quote-dot')];
   if(slides.length<2)return;
   let i=0,timer=null;
-  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(n){i=(n+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('is-active',k===i));dots.forEach((d,k)=>d.classList.toggle('is-active',k===i));}
-  function start(){if(reduce)return;stop();timer=setInterval(()=>show(i+1),7500);}
+  function start(){stop();timer=setInterval(()=>show(i+1),7500);}
   function stop(){if(timer){clearInterval(timer);timer=null;}}
   root.querySelector('.quote-prev').addEventListener('click',()=>{show(i-1);start();});
   root.querySelector('.quote-next').addEventListener('click',()=>{show(i+1);start();});
@@ -480,19 +465,6 @@ render();
   root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',start);
   root.addEventListener('focusin',stop);root.addEventListener('focusout',start);
   start();
-})();
-
-(function(){
-  function widont(el){
-    const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
-    let last=null,n;
-    while(n=w.nextNode()){if(n.nodeValue.trim())last=n;}
-    if(!last)return;
-    const v=last.nodeValue.replace(/\s+$/,'');
-    const i=v.lastIndexOf(' ');
-    if(i>-1)last.nodeValue=v.slice(0,i)+' '+v.slice(i+1);
-  }
-  document.querySelectorAll('.coalition-text p, .audience-card p, .quote-text').forEach(widont);
 })();
 </script>
 </body>
