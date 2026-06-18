@@ -95,10 +95,11 @@
 
   /* === SURVEY: video screen + end-card === */
   .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100vh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
-  .qv-title{flex:0 0 auto;max-width:94vw;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:clamp(.8rem,3.4vw,1.3rem);letter-spacing:.04em;line-height:1.05;margin-bottom:1.1rem;text-decoration:none;cursor:pointer;transition:color .15s}
+  .qv-group{width:min(96vw,calc((100vh - 140px) * 9 / 16),440px);container-type:inline-size;display:flex;flex-direction:column;align-items:center}
+  .qv-title{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:6.25cqw;letter-spacing:.04em;line-height:1.05;margin-bottom:1rem;text-decoration:none;cursor:pointer;transition:color .15s}
   .qv-title:hover{color:var(--gold)}
   .step-screen.qv-screen.active{display:flex}
-  .qv-window{position:relative;container-type:inline-size;width:min(94vw,calc((100vh - 136px) * 9 / 16),420px);aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--navy)}
+  .qv-window{position:relative;container-type:inline-size;width:100%;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--navy)}
   .qv-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--navy)}
   .qv-skip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:.45rem;background:rgba(0,38,71,.55);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.5rem 1.05rem;border-radius:100px;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:background .15s}
   .qv-skip:hover{background:rgba(0,38,71,.85)}
@@ -123,7 +124,9 @@
   .qv-ph-title{font-family:var(--font-display);font-weight:400;font-size:clamp(1.7rem,11cqi,2.8rem);letter-spacing:.02em;line-height:1.04}
   .qv-ph-sub{font-size:clamp(.9rem,5cqi,1.1rem);color:rgba(255,255,255,.82);margin-top:.55rem}
   @media(orientation:landscape) and (min-width:760px){
-    .qv-window{width:min(90vw,calc((100vh - 136px) * 16 / 9),900px);aspect-ratio:16/9}
+    .qv-group{width:min(92vw,calc((100vh - 140px) * 16 / 9),900px)}
+    .qv-window{aspect-ratio:16/9}
+    .qv-title{font-size:4.85cqw}
   }
 
   /* === RESULTS === */
@@ -470,17 +473,19 @@ function renderNode(n){
   var prompt=n.q?'<div class="qv-prompt">'+n.q+'</div>':'';
   var ph='<div class="qv-ph"><div><div class="qv-ph-tag">Video placeholder</div><div class="qv-ph-title">'+n.label+'</div><div class="qv-ph-sub">'+n.p+'</div></div></div>';
   return '<div class="step-screen qv-screen active">'+
-    '<a class="qv-title" href="#" onclick="pwExit();return false;">Pathways for Arts Educator Development</a>'+
-    '<div class="qv-window">'+
-      ph+
-      '<button class="qv-skip" onclick="qvSkip(this)">Skip video '+ICON_SKIP+'</button>'+
-      '<div class="qv-end">'+prompt+'<div class="qv-opts">'+opts+'</div>'+
-        '<div class="qv-endfoot">'+
-          '<button class="qv-replay" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay video</button>'+
+    '<div class="qv-group">'+
+      '<a class="qv-title" href="#" onclick="pwExit();return false;">Pathways for Arts Educator Development</a>'+
+      '<div class="qv-window">'+
+        ph+
+        '<button class="qv-skip" onclick="qvSkip(this)">Skip video '+ICON_SKIP+'</button>'+
+        '<div class="qv-end">'+prompt+'<div class="qv-opts">'+opts+'</div>'+
+          '<div class="qv-endfoot">'+
+            '<button class="qv-replay" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay video</button>'+
+          '</div>'+
         '</div>'+
       '</div>'+
+      '<button class="qv-backlink" onclick="pwBack()">'+ICON_BACK+' Back</button>'+
     '</div>'+
-    '<button class="qv-backlink" onclick="pwBack()">'+ICON_BACK+' Back</button>'+
   '</div>';
 }
 
