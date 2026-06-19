@@ -23,7 +23,7 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
   /* === HERO === */
-  .hero-banner{position:relative;width:100%;height:920px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem;background:var(--navy)}
+  .hero-banner{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem;background:var(--navy)}
   .hero-slides{position:absolute;inset:0;z-index:0}
   .hero-slide{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .8s ease-in-out}
   .hero-slide.is-active{opacity:1}
@@ -34,6 +34,11 @@
   .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:1rem 2.5rem;font-family:var(--font-body);font-size:clamp(.9rem,1.6vw,1.2rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
   .hero-btn:hover{opacity:.9;transform:translateY(-2px)}
   .hero-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  .hero-scroll{position:absolute;left:50%;bottom:1.75rem;transform:translateX(-50%);z-index:2;display:flex;background:none;border:none;padding:.5rem;cursor:pointer;color:rgba(255,255,255,.8);transition:color .15s;animation:heroScrollBounce 2s ease-in-out infinite}
+  .hero-scroll:hover{color:var(--white)}
+  .hero-scroll svg{width:96px;height:48px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  @keyframes heroScrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+  @media (prefers-reduced-motion:reduce){.hero-scroll{animation:none}}
 
   /* === CONTENT === */
   .content-wrap{max-width:1100px;width:100%;margin:0 auto;padding:0 2rem}
@@ -184,7 +189,6 @@
     .audience-grid{display:flex;flex-direction:column;align-items:stretch}
     .audience-card{width:100%}
     .quote-slide{flex-direction:column;text-align:center;gap:1.25rem}
-    .hero-banner{height:640px}
     .hero-banner .hero-text h2{font-size:2.4rem}
     .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
     .step-screen{padding:2rem 1.25rem}
@@ -223,6 +227,7 @@
     <p class="hero-sub">Get connected to resources matching<br>your skills, interests, and experience</p>
   </div>
   <button class="hero-btn" onclick="pwStart()">Start Now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+  <button class="hero-scroll" aria-label="Scroll to content" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M12 9 L24 15 L36 9"/></svg></button>
 </div>
 
 <!-- HOME SECTIONS -->
