@@ -99,13 +99,12 @@
   .back-btn svg{width:14px;height:14px;stroke:currentColor}
 
   /* === SURVEY: video screen + end-card === */
-  .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100vh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
-  .qv-group{width:min(96vw,calc((100vh - 140px) * 9 / 16),440px);container-type:inline-size;display:flex;flex-direction:column;align-items:center}
-  .qv-title{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:6.25cqw;letter-spacing:.04em;line-height:1.05;margin-bottom:1rem;text-decoration:none;cursor:pointer;transition:color .15s}
-  .qv-title:hover{color:var(--gold)}
+  .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100dvh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
+  .qv-group{width:100%;container-type:inline-size;display:flex;flex-direction:column;align-items:center}
+  .qv-title{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:5.85cqw;letter-spacing:.04em;line-height:1.05;margin-bottom:1rem}
   .step-screen.qv-screen.active{display:flex}
-  .qv-window{position:relative;container-type:inline-size;width:100%;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--navy)}
-  .qv-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--navy)}
+  .qv-window{position:relative;container-type:inline-size;width:100%;aspect-ratio:9/16;max-height:calc(100dvh - 124px);border-radius:0;overflow:hidden;background:var(--navy)}
+  .qv-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;background:var(--navy)}
   .qv-skip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:.45rem;background:rgba(0,38,71,.55);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.5rem 1.05rem;border-radius:100px;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:background .15s}
   .qv-skip:hover{background:rgba(0,38,71,.85)}
   .qv-skip svg{width:13px;height:13px;fill:currentColor}
@@ -121,16 +120,20 @@
   .qv-replay{display:inline-flex;align-items:center;gap:.45rem;background:none;border:none;color:rgba(255,255,255,.7);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
   .qv-replay:hover{color:var(--gold)}
   .qv-replay svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-  .qv-backlink{flex:0 0 auto;margin-top:1rem;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:var(--gold);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:opacity .15s}
+  .qv-foot{margin-top:1.1rem;display:flex;align-items:center;justify-content:center;gap:1.6rem}
+  .qv-backlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:var(--gold);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:opacity .15s}
   .qv-backlink:hover{opacity:.75}
   .qv-backlink svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  .qv-exitlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:rgba(255,255,255,.6);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
+  .qv-exitlink:hover{color:#fff}
+  .qv-exitlink svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
   .qv-ph{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem 1.4rem;background:linear-gradient(160deg,#3f7cba,#11538f);color:#fff}
   .qv-ph-tag{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
   .qv-ph-title{font-family:var(--font-display);font-weight:400;font-size:clamp(1.7rem,11cqi,2.8rem);letter-spacing:.02em;line-height:1.04}
   .qv-ph-sub{font-size:clamp(.9rem,5cqi,1.1rem);color:rgba(255,255,255,.82);margin-top:.55rem}
-  @media(orientation:landscape) and (min-width:760px){
+  @media(orientation:landscape) and (min-width:720px){
     .qv-group{width:min(92vw,calc((100vh - 140px) * 16 / 9),900px)}
-    .qv-window{aspect-ratio:16/9}
+    .qv-window{aspect-ratio:16/9;max-height:none;border-radius:10px}
     .qv-title{font-size:4.85cqw}
   }
 
@@ -196,6 +199,14 @@
   }
   @media(max-width:520px){
     .prog-list{column-count:1}
+  }
+  /* Short landscape (phones held sideways): scoped so portrait/desktop are untouched */
+  @media(orientation:landscape) and (max-height:500px){
+    .hero-banner{gap:.6rem}
+    .hero-banner .hero-text h2{font-size:1.7rem}
+    .hero-banner .hero-sub{font-size:.82rem;margin-top:.4rem}
+    .hero-btn{margin-top:.6rem;padding:.7rem 1.8rem}
+    .hero-scroll{display:none}
   }
   @media print{
     footer,.actions-row,.back-btn,.hero-banner,#homeSections{display:none!important}
@@ -371,6 +382,7 @@
 const ICON_BACK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>';
 const ICON_SKIP='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,4 13,12 5,20"/><rect x="15" y="4" width="3" height="16"/></svg>';
 const ICON_REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.3"/><polyline points="3 4 3 9 8 9"/></svg>';
+const ICON_EXIT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 const PLACEHOLDER_VIDEO='video/survey_preview_V1.mp4';
 
 const NODES={
@@ -479,7 +491,7 @@ function renderNode(n){
   var ph='<div class="qv-ph"><div><div class="qv-ph-tag">Video placeholder</div><div class="qv-ph-title">'+n.label+'</div><div class="qv-ph-sub">'+n.p+'</div></div></div>';
   return '<div class="step-screen qv-screen active">'+
     '<div class="qv-group">'+
-      '<a class="qv-title" href="#" onclick="pwExit();return false;">Pathways for Arts Educator Development</a>'+
+      '<div class="qv-title">Pathways for Arts Educator Development</div>'+
       '<div class="qv-window">'+
         ph+
         '<button class="qv-skip" onclick="qvSkip(this)">Skip video '+ICON_SKIP+'</button>'+
@@ -489,7 +501,10 @@ function renderNode(n){
           '</div>'+
         '</div>'+
       '</div>'+
-      '<button class="qv-backlink" onclick="pwBack()">'+ICON_BACK+' Back</button>'+
+      '<div class="qv-foot">'+
+        '<button class="qv-backlink" onclick="pwBack()">'+ICON_BACK+' Back</button>'+
+        '<button class="qv-exitlink" onclick="pwExit()">'+ICON_EXIT+' Exit</button>'+
+      '</div>'+
     '</div>'+
   '</div>';
 }
