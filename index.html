@@ -116,6 +116,10 @@
   .qv-replay-overlay .qv-replay-btn{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.55);color:#fff;font-family:var(--font-body);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.7rem 1.4rem;border-radius:100px;cursor:pointer;transition:background .15s}
   .qv-replay-overlay .qv-replay-btn:hover{background:rgba(255,255,255,.22)}
   .qv-replay-overlay .qv-replay-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .qv-window:has(.qv-video){cursor:pointer}
+  .qv-playicon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;display:none;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:rgba(0,38,71,.5);color:#fff;pointer-events:none;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+  .qv-window.paused .qv-playicon{display:flex}
+  .qv-playicon svg{width:26px;height:26px;margin-left:3px;fill:currentColor}
   .qv-end{position:absolute;inset:0;z-index:4;display:none;flex-direction:column;justify-content:center;overflow-y:auto;background:var(--navy);padding:1.75rem 1.3rem 3.4rem;container-type:inline-size}
   .qv-end.show{display:flex}
   .qv-prompt{font-family:var(--font-display);font-weight:400;color:#fff;text-align:center;font-size:clamp(1.3rem,7cqi,2rem);letter-spacing:.02em;line-height:1.08;margin-bottom:1.2rem}
@@ -152,8 +156,9 @@
     .qv-endfoot{display:none}
     .qv-foot{margin-top:0;padding-bottom:1.5rem}
     .qv-mute{display:inline-flex}
+    .qv-skip{display:none}
     .qv-window.ended .qv-replay-overlay{display:flex}
-    .qv-window.ended .qv-skip,.qv-window.ended .qv-mute{display:none}
+    .qv-window.ended .qv-mute{display:none}
   }
   /* Tablet portrait: re-introduce the enclosing, centered 9:16 box (phones stay full-bleed) */
   @media(orientation:portrait) and (min-width:600px){
@@ -409,6 +414,7 @@ const ICON_REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 
 const ICON_EXIT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 const ICON_MUTED='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 L6 9 H3 V15 H6 L11 19 Z"/><line x1="16" y1="9.5" x2="21" y2="14.5"/><line x1="21" y1="9.5" x2="16" y2="14.5"/></svg>';
 const ICON_UNMUTED='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 L6 9 H3 V15 H6 L11 19 Z"/><path d="M15.4 8.8a4.6 4.6 0 0 1 0 6.4"/><path d="M18.2 6a8.6 8.6 0 0 1 0 12"/></svg>';
+const ICON_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg>';
 const PLACEHOLDER_VIDEO='video/survey_preview_V1.mp4';
 const VP_LAUREL='images/video%20placeholder%20stills/vp_laurel_916.jpg';
 
@@ -522,8 +528,9 @@ function renderNode(n){
     '<div class="qv-group">'+
       '<div class="qv-title">Pathways for Arts Educator Development</div>'+
       '<div class="qv-stage">'+
-        '<div class="qv-window">'+
+        '<div class="qv-window" onclick="qvTap(this,event)">'+
           media+
+          '<div class="qv-playicon" aria-hidden="true">'+ICON_PLAY+'</div>'+
           '<button class="qv-skip" onclick="qvSkip(this)">Skip video '+ICON_SKIP+'</button>'+
           '<button class="qv-mute" data-muted="true" aria-label="Unmute video" onclick="qvMute(this)">'+ICON_MUTED+'</button>'+
           '<div class="qv-replay-overlay"><button class="qv-replay-btn" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay video</button></div>'+
@@ -554,9 +561,16 @@ function qvSkip(btn){qvShowEnd(btn.closest('.qv-window'));}
 function qvReplay(btn){
   var stage=btn.closest('.qv-stage');
   var win=stage.querySelector('.qv-window');
-  win.classList.remove('ended');
+  win.classList.remove('ended');win.classList.remove('paused');
   var end=stage.querySelector('.qv-end');if(end)end.classList.remove('show');
   var v=win.querySelector('.qv-video');if(v){v.currentTime=0;v.play().catch(function(){});}
+}
+function qvTap(win,ev){
+  if(ev.target.closest('.qv-skip,.qv-mute,.qv-replay-overlay'))return;  // let controls handle their own clicks
+  if(win.classList.contains('ended'))return;                            // ended → use Replay overlay
+  var v=win.querySelector('.qv-video');if(!v)return;                     // no-op on still/gradient placeholders
+  if(v.paused){v.play().catch(function(){});win.classList.remove('paused');}
+  else{v.pause();win.classList.add('paused');}
 }
 function qvMute(btn){
   var muted=btn.getAttribute('data-muted')!=='false';      // default muted
