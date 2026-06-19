@@ -143,18 +143,19 @@
   .qv-ph-tag{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
   .qv-ph-title{font-family:var(--font-display);font-weight:400;font-size:clamp(1.7rem,11cqi,2.8rem);letter-spacing:.02em;line-height:1.04}
   .qv-ph-sub{font-size:clamp(.9rem,5cqi,1.1rem);color:rgba(255,255,255,.82);margin-top:.55rem}
-  /* Desktop / landscape (Option A): title in a full-width top bar; 9:16 video + questions
-     centered below; Back/Exit pinned at the bottom. Shared vars keep stage sizing in sync. */
+  /* Desktop / landscape: the whole block (header + video/questions + footer) is ONE rounded
+     navy card, centered + floating on the ice page background — narrows focus on a big window.
+     Header anchored to card top, footer to card bottom, both with buffers. */
   @media(orientation:landscape) and (min-width:720px){
-    .step-screen.qv-screen{padding:0}
-    .qv-group{--vidH:min(70vh,600px);--panelW:min(42vw,440px);--colGap:2.75rem;width:100%;min-height:100dvh;justify-content:space-between;container-type:normal}
-    .qv-title{align-self:stretch;width:100%;margin:0;padding:1.15rem 1.5rem;font-size:calc((var(--vidH) * 9 / 16 + var(--colGap) + var(--panelW)) * .0488);background:#001226}
-    .qv-stage{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:var(--colGap);width:auto;max-width:94vw}
+    .step-screen.qv-screen{padding:3vh 2vw;background:var(--ice)}
+    .qv-group{--vidH:min(56vh,520px);--panelW:min(42vw,440px);--colGap:2.75rem;width:auto;max-width:min(94vw,1040px);background:var(--navy);border-radius:18px;box-shadow:0 18px 50px rgba(0,38,71,.22);justify-content:flex-start;container-type:normal}
+    .qv-title{align-self:stretch;width:100%;margin:0;padding:1.1rem 1.5rem;font-size:calc((var(--vidH) * 9 / 16 + var(--colGap) + var(--panelW)) * .0488);background:#001226;border-radius:18px 18px 0 0}
+    .qv-stage{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:var(--colGap);width:auto;max-width:none;margin:0;padding:1.7rem 2rem 0}
     .qv-window{width:auto;height:var(--vidH);aspect-ratio:9/16;max-height:none;border-radius:12px}
     .qv-end{position:static;inset:auto;display:flex!important;width:var(--panelW);background:none;overflow:visible;padding:0;justify-content:center}
     .qv-opts{margin:0}
     .qv-endfoot{display:none}
-    .qv-foot{margin-top:0;padding-bottom:1.5rem}
+    .qv-foot{margin:0;padding:1.5rem 2rem 1.6rem}
     .qv-mute{display:inline-flex}
     .qv-skip{display:none}
     .qv-window.ended .qv-replay-overlay{display:flex}
