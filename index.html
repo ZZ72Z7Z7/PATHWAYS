@@ -29,7 +29,7 @@
   .hero-slide.is-active{opacity:1}
   .hero-banner::after{content:'';position:absolute;inset:0;background:rgba(0,38,71,.6);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);z-index:1}
   .hero-banner .hero-text{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem}
-  .hero-banner .hero-text h2{font-family:var(--font-display);font-size:4rem;letter-spacing:.03em;line-height:1.05;max-width:1250px}
+  .hero-banner .hero-text h1{font-family:var(--font-display);font-weight:400;font-size:4rem;letter-spacing:.03em;line-height:1.05;max-width:1250px}
   .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:450px;text-align:center;margin:.75rem auto 0}
   .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:1rem 2.5rem;font-family:var(--font-body);font-size:clamp(.9rem,1.6vw,1.2rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
   .hero-btn:hover{opacity:.9;transform:translateY(-2px)}
@@ -136,6 +136,11 @@
     .qv-window{aspect-ratio:16/9;max-height:none;border-radius:10px}
     .qv-title{font-size:4.85cqw}
   }
+  /* Tablet portrait: re-introduce the enclosing, centered 9:16 box (phones stay full-bleed) */
+  @media(orientation:portrait) and (min-width:600px){
+    .qv-group{width:min(86vw,calc((100dvh - 150px) * 9 / 16),500px)}
+    .qv-window{max-height:none;border-radius:10px}
+  }
 
   /* === RESULTS === */
   .results-header{background:var(--navy);color:var(--white);padding:1.75rem 2rem;border-radius:var(--r);margin-bottom:1.5rem}
@@ -192,7 +197,7 @@
     .audience-grid{display:flex;flex-direction:column;align-items:stretch}
     .audience-card{width:100%}
     .quote-slide{flex-direction:column;text-align:center;gap:1.25rem}
-    .hero-banner .hero-text h2{font-size:2.4rem}
+    .hero-banner .hero-text h1{font-size:2.4rem}
     .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
     .step-screen{padding:2rem 1.25rem}
     .prog-list{column-count:2}
@@ -203,7 +208,7 @@
   /* Short landscape (phones held sideways): scoped so portrait/desktop are untouched */
   @media(orientation:landscape) and (max-height:500px){
     .hero-banner{gap:.6rem}
-    .hero-banner .hero-text h2{font-size:1.7rem}
+    .hero-banner .hero-text h1{font-size:1.7rem}
     .hero-banner .hero-sub{font-size:.82rem;margin-top:.4rem}
     .hero-btn{margin-top:.6rem;padding:.7rem 1.8rem}
     .hero-scroll{display:none}
@@ -234,7 +239,7 @@
     <div class="hero-slide" data-bg="images/hero_dance_03.jpg"></div>
   </div>
   <div class="hero-text">
-    <h2>Find Your Path<br>as an Arts Educator<br>in California</h2>
+    <h1>Find Your Path<br>as an Arts Educator<br>in California</h1>
     <p class="hero-sub">Get connected to resources matching<br>your skills, interests, and experience</p>
   </div>
   <button class="hero-btn" onclick="pwStart()">Start Now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
@@ -386,17 +391,17 @@ const ICON_EXIT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const PLACEHOLDER_VIDEO='video/survey_preview_V1.mp4';
 
 const NODES={
-  welcome:{p:'Laurel & Ricky',label:'Welcome',q:'Welcome! Tell us about you...',o:[
+  welcome:{p:'Laurel & Ricky',label:'Welcome',q:'What best describes you?',o:[
     {t:'Credentialed Teacher (non-arts)',to:'suppAuth'},
     {t:'Teaching Artist',to:'cteIntro'},
     {t:'Artist',to:'taVsCred'},
     {t:'Student',to:'taVsCred'}
   ]},
-  suppAuth:{p:'Chris',label:'Supplementary Authorization',q:'Is this what you were looking for? Or would you rather just teach your art form full-time?',o:[
-    {t:"Yes, this is what I've been looking for!",to:'@supp'},
-    {t:'I actually just want to be an arts teacher',to:'cteIntro'}
+  suppAuth:{p:'Chris',label:'Supplementary Authorization',q:'Is this what you were looking for?',o:[
+    {t:'Yes!',to:'@supp'},
+    {t:'Actually, I just want to be an arts teacher',to:'cteIntro'}
   ]},
-  taVsCred:{p:'Laurel & Ricky',label:'Teaching Artist vs. Credentialed Teacher',q:'Which path is right for you?',o:[
+  taVsCred:{p:'Laurel',label:'Teaching Artist vs. Credentialed Teacher',q:'Which path is right for you?',o:[
     {t:'Credentialed Teacher',to:'cteIntro'},
     {t:'Teaching Artist',to:'lifeTA'}
   ]},
@@ -405,8 +410,8 @@ const NODES={
     {t:'No',to:'whatTeach'}
   ]},
   cteVideo:{p:'Tiffany',label:'The CTE Pathway',q:'Is the CTE pathway right for you?',o:[
-    {t:'Great, this is what I want to do!',to:'@cte'},
-    {t:"I'd rather get my full single-subject credential...",to:'whatTeach'}
+    {t:'Yes!',to:'@cte'},
+    {t:"I'd rather get my full single-subject credential",to:'whatTeach'}
   ]},
   whatTeach:{p:'Laurel / Ricky',label:'Choosing a Discipline',q:'What do you want to teach?',o:[
     {t:'Music',to:'mMusic'},
@@ -419,19 +424,19 @@ const NODES={
     {t:"Actually, I'd rather look into getting a full teaching credential",to:'cteIntro',alt:1}
   ]},
   mMusic:{p:'Matthew',label:'Teaching Music',q:'Ready to pursue a music credential?',o:[
-    {t:"Yes, I'd like to pursue a music credential!",to:'@music'},
+    {t:'Yes!',to:'@music'},
     {t:'Actually, I want to explore a different path',to:'@reset',alt:1}
   ]},
   mTheater:{p:'Eric',label:'Teaching Theater',q:'Ready to pursue a theater credential?',o:[
-    {t:"Yes, I'd like to pursue a theater credential!",to:'@theatre'},
+    {t:'Yes!',to:'@theatre'},
     {t:'Actually, I want to explore a different path',to:'@reset',alt:1}
   ]},
   mDance:{p:'Lindsay',label:'Teaching Dance',q:'Ready to pursue a dance credential?',o:[
-    {t:"Yes, I'd like to pursue a dance credential!",to:'@dance'},
+    {t:'Yes!',to:'@dance'},
     {t:'Actually, I want to explore a different path',to:'@reset',alt:1}
   ]},
   mArt:{p:'Kristin',label:'Teaching Visual Art',q:'Ready to pursue a visual arts credential?',o:[
-    {t:"Yes, I'd like to pursue a visual arts credential!",to:'@art'},
+    {t:'Yes!',to:'@art'},
     {t:'Actually, I want to explore a different path',to:'@reset',alt:1}
   ]}
 };
@@ -457,7 +462,7 @@ function pwExit(){
   document.getElementById('heroBanner').style.display='';
   document.getElementById('homeSections').style.display='';
   document.querySelector('footer').style.display='';
-  window.scrollTo({top:0});
+  window.scrollTo({top:0,behavior:'instant'});
 }
 
 function showScreen(s,push){
@@ -469,7 +474,7 @@ function showScreen(s,push){
   const app=document.getElementById('app');
   app.innerHTML=(s.t==='node')?renderNode(NODES[s.k]):renderProfile(s.k);
   if(s.t==='node'){var _v=app.querySelector('.qv-video');if(_v)_v.play().catch(function(){});}
-  window.scrollTo({top:0});
+  window.scrollTo({top:0,behavior:'instant'});
 }
 
 function pwChoose(to){
