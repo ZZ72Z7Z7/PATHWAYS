@@ -71,21 +71,21 @@
 
   "teachingArtist": [
     {"name": "The Teaching Artist Institute", "url": "https://www.teachingartistinstitute.org/", "conf": "High", "src": "org = the program"},
-    {"name": "The Music Center — Teaching Artist Training", "url": "https://www.musiccenter.org/experience-learn/experience-learn/for-artists/teaching-artist-training/", "conf": "Med", "src": "specific page (domain bot-blocks fetch)"},
-    {"name": "The Entertainment Community Fund — Teaching Artist Program", "url": "https://entertainmentcommunity.org/services-and-programs/arts-education", "conf": "High", "src": "Arts Education page (program home)"},
-    {"name": "UC Irvine, Claire Trevor School of the Arts — Certificate in Teaching Artistry", "url": "https://ce.uci.edu/programs/education/teaching-artistry", "conf": "High", "src": "certificate page"},
-    {"name": "P.S. ARTS — Arts Integration Coach Training & Teaching Artist Summer Intensive", "url": "https://psarts.org/programs/educator-development/", "conf": "Med", "src": "Educator Development hub"},
-    {"name": "P.S. ARTS x CalState LA — Teaching Artist Certificate Program", "url": "https://psarts.org/p-s-arts-x-csula-partnership/", "conf": "High", "src": "specific partnership page"},
-    {"name": "Arts Education Connection San Diego — Teaching Artist Institute", "url": "https://www.artsedsd.org/tai", "conf": "High", "src": "specific program page"},
-    {"name": "CoTA (Collaborations: Teachers and Artists) — Artist-Educator Institute", "url": "https://cotaprogram.org/", "conf": "Med", "src": "host homepage"},
-    {"name": "Arts & Healing Initiative — Online Certificate in Social Emotional Arts", "url": "https://artsandhealinginitiative.org/pages/certificate-program-in-social-emotional-arts-sea", "conf": "High", "src": "specific program page"},
-    {"name": "Alameda County Office of Education — Integrated Learning Specialist Certificate", "url": "https://artseducator.org/integrated-learning-arts-education-consulting/integrated-learning-specialist-program/", "conf": "Med", "src": "partner consultant domain"},
-    {"name": "Focus 5 — Teaching Artist Intensive", "url": "https://artsintegrationconsulting.com/2025-teaching-artist-intensive/", "conf": "High", "src": "specific program page"},
-    {"name": "LACMA — Teaching Artist Training Series", "url": "https://unframed.lacma.org/2024/05/06/lacma-teaching-artist-training-series-tats", "conf": "High", "src": "official LACMA blog (no standalone page)"},
-    {"name": "Luna Dance Institute — Professional Learning Institutes", "url": "https://lunadancecreativity.org/professional-learning/institutes/", "conf": "High", "src": "specific program page"},
-    {"name": "Luther Burbank Center for the Arts — Teaching Artist Certificate", "url": "https://lutherburbankcenter.org/education/for-schools-and-teachers/professional-development/teaching-artist-certificate-and-practicum/", "conf": "High", "src": "specific program page"},
-    {"name": "Santa Rosa Junior College — Arts Education Assistant Certificate", "url": "https://college-skills.santarosa.edu/arts-education-assistant-certificate", "conf": "High", "src": "specific program page"},
-    {"name": "Studio Pathways — Culturally Responsive Educator in the Arts (CCREA) Certificate", "url": "https://www.studiopathways.org/professionallearning", "conf": "High", "src": "specific program page"}
+    {"name": "The Music Center", "url": "https://www.musiccenter.org/experience-learn/experience-learn/for-artists/teaching-artist-training/", "conf": "Med", "src": "specific page (domain bot-blocks fetch)"},
+    {"name": "The Entertainment Community Fund", "url": "https://entertainmentcommunity.org/services-and-programs/arts-education", "conf": "High", "src": "Arts Education page (program home)"},
+    {"name": "UC Irvine, Claire Trevor School of the Arts", "url": "https://ce.uci.edu/programs/education/teaching-artistry", "conf": "High", "src": "certificate page"},
+    {"name": "P.S. ARTS", "url": "https://psarts.org/programs/educator-development/", "conf": "Med", "src": "Educator Development hub"},
+    {"name": "P.S. ARTS x CalState LA", "url": "https://psarts.org/p-s-arts-x-csula-partnership/", "conf": "High", "src": "specific partnership page"},
+    {"name": "Arts Education Connection San Diego", "url": "https://www.artsedsd.org/tai", "conf": "High", "src": "specific program page"},
+    {"name": "CoTA (Collaborations: Teachers and Artists)", "url": "https://cotaprogram.org/", "conf": "Med", "src": "host homepage"},
+    {"name": "Arts & Healing Initiative", "url": "https://artsandhealinginitiative.org/pages/certificate-program-in-social-emotional-arts-sea", "conf": "High", "src": "specific program page"},
+    {"name": "Alameda County Office of Education", "url": "https://artseducator.org/integrated-learning-arts-education-consulting/integrated-learning-specialist-program/", "conf": "Med", "src": "partner consultant domain"},
+    {"name": "Focus 5", "url": "https://artsintegrationconsulting.com/2025-teaching-artist-intensive/", "conf": "High", "src": "specific program page"},
+    {"name": "LACMA", "url": "https://unframed.lacma.org/2024/05/06/lacma-teaching-artist-training-series-tats", "conf": "High", "src": "official LACMA blog (no standalone page)"},
+    {"name": "Luna Dance Institute", "url": "https://lunadancecreativity.org/professional-learning/institutes/", "conf": "High", "src": "specific program page"},
+    {"name": "Luther Burbank Center for the Arts", "url": "https://lutherburbankcenter.org/education/for-schools-and-teachers/professional-development/teaching-artist-certificate-and-practicum/", "conf": "High", "src": "specific program page"},
+    {"name": "Santa Rosa Junior College", "url": "https://college-skills.santarosa.edu/arts-education-assistant-certificate", "conf": "High", "src": "specific program page"},
+    {"name": "Studio Pathways", "url": "https://www.studiopathways.org/professionallearning", "conf": "High", "src": "specific program page"}
   ],
 
   "art": [
