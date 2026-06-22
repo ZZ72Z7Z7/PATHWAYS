@@ -179,7 +179,7 @@
     .qv-cc{left:auto;right:60px}
     .qv-skip{left:14px;transform:none}
     .qv-window.ended .qv-replay-overlay{display:flex}
-    .qv-window.ended .qv-mute,.qv-window.ended .qv-cc{display:none}
+    .qv-window.ended .qv-mute,.qv-window.ended .qv-cc,.qv-window.ended .qv-skip{display:none}
   }
   /* Tablet portrait: re-introduce the enclosing, centered 9:16 box (phones stay full-bleed) */
   @media(orientation:portrait) and (min-width:600px){
@@ -220,20 +220,19 @@
   .supp-content li{margin-bottom:.5rem;line-height:1.55}
   .supp-content .supp-cta{margin-top:1.5rem}
   .disclaimer-box{margin-top:2rem;padding:1rem 1.15rem;background:var(--white);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;font-size:.8rem;line-height:1.55;color:var(--blue)}
-  .actions-row{display:flex;justify-content:center;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+  .actions-row{display:flex;justify-content:center;gap:.75rem;margin-top:2.5rem;flex-wrap:wrap}
   .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
   .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
   .btn-secondary{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--navy);border:2px solid rgba(0,38,71,.15);border-radius:var(--r);padding:.7rem 1.3rem;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .15s,color .15s}
   .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
   /* Result screen — Approach B: questionnaire-matched frame, light content */
   .qv-result{max-width:900px;padding-top:3rem}
-  .qv-result .results-header{border-radius:18px;box-shadow:0 14px 40px rgba(0,38,71,.18);text-align:center;padding:1.6rem 2rem}
+  .qv-result .results-header{border-radius:18px;box-shadow:0 14px 40px rgba(0,38,71,.18);text-align:center;padding:1.6rem 2rem;margin-bottom:1.875rem}
   .qv-result .results-header .res-label{font-family:var(--font-body);font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-size:.8rem;margin-bottom:.4rem}
-  .qv-result .qv-foot{margin-top:2.25rem}
-  .qv-result .qv-backlink{color:var(--blue)}
-  .qv-result .qv-backlink:hover{opacity:1;color:var(--navy)}
-  .qv-result .qv-exitlink{color:rgba(0,38,71,.55)}
-  .qv-result .qv-exitlink:hover{color:var(--navy)}
+  .qv-result-foot{text-align:center;margin-top:2.25rem}
+  .qv-result-foot .rf-copy{font-family:var(--font-body);font-size:.72rem;color:rgba(0,38,71,.55);letter-spacing:.04em;margin-bottom:.35rem}
+  .qv-result-foot .rf-home{background:none;border:none;cursor:pointer;font-family:var(--font-display);font-weight:400;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
+  .qv-result-foot .rf-home:hover{color:var(--blue);text-decoration-color:var(--blue)}
 
   /* === FOOTER === */
   footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center;font-size:.78rem;letter-spacing:.03em;margin-top:auto}
@@ -268,7 +267,7 @@
     .hero-scroll{display:none}
   }
   @media print{
-    footer,.actions-row,.back-btn,.qv-foot,.hero-banner,#homeSections{display:none!important}
+    footer,.actions-row,.back-btn,.qv-foot,.qv-result-foot,.hero-banner,#homeSections{display:none!important}
     .step-screen{padding:0;max-width:100%}
     .results-header{background:var(--white)!important;color:var(--navy)!important;border:2px solid var(--navy)}
     .results-header .res-label{color:var(--blue)!important}
@@ -695,9 +694,9 @@ function renderProfile(key){
       '<div class="qv-result-body">'+body+'</div>'+
     '</div>'+
     actions+
-    '<div class="qv-foot">'+
-      '<button class="qv-backlink" onclick="pwBack()">'+ICON_BACK+' Back</button>'+
-      '<button class="qv-exitlink" onclick="pwExit()">'+ICON_EXIT+' Exit</button>'+
+    '<div class="qv-result-foot">'+
+      '<div class="rf-copy">&copy;2026</div>'+
+      '<button class="rf-home" onclick="pwExit()">Pathways for Arts Educator Development</button>'+
     '</div>'+
   '</div>';
 }
