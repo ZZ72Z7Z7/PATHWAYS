@@ -102,7 +102,8 @@
   .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100dvh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
   .qv-group{width:100%;container-type:inline-size;display:flex;flex-direction:column;align-items:center}
   .qv-stage{position:relative;width:100%}
-  .qv-title{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:5.85cqw;letter-spacing:.04em;line-height:1.05;margin-bottom:1rem}
+  .qv-title{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:5.85cqw;letter-spacing:.04em;line-height:1.05;margin-bottom:.3rem}
+  .qv-subtitle{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-body);font-weight:600;text-transform:uppercase;color:var(--gold);font-size:2.5cqw;letter-spacing:.16em;line-height:1.1;margin-bottom:1rem}
   .step-screen.qv-screen.active{display:flex}
   .qv-window{position:relative;container-type:inline-size;width:100%;aspect-ratio:9/16;max-height:calc(100dvh - 124px);border-radius:0;overflow:hidden;background:var(--navy)}
   .qv-video,.qv-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;background:var(--navy)}
@@ -155,7 +156,8 @@
   @media(orientation:landscape) and (min-width:720px){
     .step-screen.qv-screen{padding:3vh 2vw;background:var(--ice)}
     .qv-group{--vidH:min(70vh,800px,calc(100dvh - 280px));--panelW:min(42vw,440px);--colGap:2.75rem;width:auto;max-width:min(94vw,1040px);background:var(--navy);border-radius:18px;box-shadow:0 18px 50px rgba(0,38,71,.22);justify-content:flex-start;container-type:normal}
-    .qv-title{align-self:stretch;width:100%;margin:0;padding:1.2rem 1.5rem .2rem;font-size:calc((var(--vidH) * 9 / 16 + var(--colGap) + var(--panelW)) * .0488)}
+    .qv-title{align-self:stretch;width:100%;margin:0;padding:1.2rem 1.5rem .15rem;font-size:calc((var(--vidH) * 9 / 16 + var(--colGap) + var(--panelW)) * .0488)}
+    .qv-subtitle{align-self:stretch;width:100%;margin:0;padding:0 1.5rem .2rem;font-size:clamp(.72rem,1vw,.92rem);letter-spacing:.18em}
     .qv-stage{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:var(--colGap);width:auto;max-width:none;margin:0;padding:1.7rem 2rem 0}
     .qv-window{width:auto;height:var(--vidH);aspect-ratio:9/16;max-height:none;border-radius:12px}
     .qv-end{position:static;inset:auto;display:flex!important;width:var(--panelW);background:none;overflow:visible;padding:0;justify-content:center}
@@ -553,6 +555,7 @@ function renderNode(n){
   return '<div class="step-screen qv-screen active">'+
     '<div class="qv-group">'+
       '<div class="qv-title">Pathways for Arts Educator Development</div>'+
+      '<div class="qv-subtitle">Interactive Questionnaire</div>'+
       '<div class="qv-stage">'+
         '<div class="qv-window" onclick="qvTap(this,event)">'+
           media+
