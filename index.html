@@ -206,10 +206,15 @@
   .resource-card .rc-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
   .rc-tag{font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .5rem;border-radius:100px;background:var(--ice);color:var(--blue)}
   /* Program list (multi-column, alphabetized) */
-  .prog-intro{font-size:.9rem;font-weight:700;color:var(--blue);line-height:1.6;margin-bottom:1.5rem}
-  .prog-list{column-count:3;column-gap:1.75rem;margin-bottom:1.25rem}
-  .prog-list a{display:block;break-inside:avoid;font-size:.82rem;color:var(--blue);text-decoration:none;padding:.3rem 0;border-bottom:1px solid rgba(0,38,71,.07);line-height:1.3;transition:color .12s}
-  .prog-list a:hover{color:var(--navy)}
+  .prog-intro{font-family:var(--font-body);font-weight:700;font-size:.78rem;color:rgba(0,38,71,.55);line-height:1.4;margin-bottom:1.4rem;text-align:left;text-transform:uppercase;letter-spacing:.08em}
+  .prog-region{margin-bottom:1.6rem}
+  .prog-region:last-of-type{margin-bottom:0}
+  .prog-region-title{font-family:var(--font-display);font-weight:400;font-size:1.05rem;letter-spacing:.05em;color:var(--navy);margin-bottom:.55rem;padding-bottom:.3rem;border-bottom:1px solid rgba(0,38,71,.12)}
+  .prog-list{column-count:2;column-gap:2.5rem;margin-bottom:1.25rem}
+  .prog-region .prog-list{margin-bottom:0}
+  .prog-list a{display:block;break-inside:avoid;font-size:.82rem;color:var(--blue);text-decoration:underline;text-decoration-color:rgba(12,89,157,.4);text-underline-offset:2px;padding:.3rem 0;line-height:1.3;transition:color .12s,text-decoration-color .12s}
+  .prog-list a:hover{color:var(--navy);text-decoration-color:var(--navy)}
+  .prog-list a::after{content:"";display:inline-block;width:.62em;height:.62em;margin-left:.3em;vertical-align:-.02em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230C599D' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7'/%3E%3Cpath d='M8 7h9v9'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.6}
   .prog-list a sup{color:#b9892a;font-weight:700;margin-left:1px}
   .prog-note{display:flex;gap:.4rem;font-size:.74rem;line-height:1.5;color:rgba(0,38,71,.7);background:var(--white);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:.6rem .85rem;margin-bottom:1.5rem}
   .prog-note sup{color:#b9892a;font-weight:700}
@@ -220,7 +225,8 @@
   .supp-content li{margin-bottom:.5rem;line-height:1.55}
   .supp-content .supp-cta{margin-top:1.5rem}
   .disclaimer-box{margin-top:2rem;padding:1rem 1.15rem;background:var(--white);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;font-size:.8rem;line-height:1.55;color:var(--blue)}
-  .actions-row{display:flex;justify-content:center;gap:.75rem;margin-top:2.5rem;flex-wrap:wrap}
+  .actions-row{display:flex;flex-direction:column;align-items:center;gap:.65rem;margin-top:2.5rem}
+  .actions-row button{min-width:240px;justify-content:center}
   .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
   .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
   .btn-secondary{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--navy);border:2px solid rgba(0,38,71,.15);border-radius:var(--r);padding:.7rem 1.3rem;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .15s,color .15s}
@@ -229,10 +235,10 @@
   .qv-result{max-width:900px;padding-top:3rem}
   .qv-result .results-header{border-radius:18px;box-shadow:0 14px 40px rgba(0,38,71,.18);text-align:center;padding:1.6rem 2rem;margin-bottom:1.875rem}
   .qv-result .results-header .res-label{font-family:var(--font-body);font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-size:.8rem;margin-bottom:.4rem}
-  .qv-result-foot{text-align:center;margin-top:2.25rem}
-  .qv-result-foot .rf-copy{font-family:var(--font-body);font-size:.72rem;color:rgba(0,38,71,.55);letter-spacing:.04em;margin-bottom:.35rem}
-  .qv-result-foot .rf-home{background:none;border:none;cursor:pointer;font-family:var(--font-display);font-weight:400;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
+  .qv-result-foot{text-align:center;margin-top:3.75rem}
+  .qv-result-foot .rf-home{background:none;border:none;cursor:pointer;font-family:var(--font-display);font-weight:400;font-size:1.1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
   .qv-result-foot .rf-home:hover{color:var(--blue);text-decoration-color:var(--blue)}
+  .qv-result-foot .rf-copy{font-family:var(--font-body);font-size:.72rem;color:rgba(0,38,71,.55);letter-spacing:.04em;margin-top:.35rem}
 
   /* === FOOTER === */
   footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center;font-size:.78rem;letter-spacing:.03em;margin-top:auto}
@@ -243,7 +249,7 @@
   .footer-logo{display:inline-block;margin:1.5rem 0}
   .footer-logo img{display:block;height:34px;width:auto;transition:opacity .15s}
   .footer-logo:hover img{opacity:.8}
-  .footer-inner .footer-contact{line-height:1.7;margin-bottom:2.5rem}
+  .footer-inner .footer-contact{line-height:1.7;margin-bottom:1.8rem}
 
   /* === RESPONSIVE === */
   @media(max-width:720px){
@@ -428,7 +434,7 @@
 <footer>
   <div class="footer-inner">
     <p><strong>Pathways for Arts Educator Development</strong></p>
-    <p>an initiative of CREATE CA</p>
+    <p>an initiative of</p>
     <a class="footer-logo" href="https://createca.org/" target="_blank" rel="noopener" aria-label="Create CA"><img src="images/createca_logo_white.png" alt="Create CA" width="224" height="34"></a>
     <p class="footer-contact">85 S. Grand Ave<br>Pasadena, CA 91105<br>626.578.9315<br><a href="mailto:info@createca.org">info@createca.org</a></p>
     <p>&copy;2026 CREATE CA</p>
@@ -685,9 +691,8 @@ function renderProfile(key){
   const P=PROFILES[key];
   const body=(P.kind==='supp')?suppHTML():listHTML(P);
   const actions='<div class="actions-row">'+
-    '<button class="btn-secondary" onclick="window.print()">Print This Page</button>'+
-    '<button class="btn-secondary" onclick="pwDownloadPDF()">Download PDF</button>'+
-    '<button class="btn-primary" onclick="pwStart()">Explore a Different Path</button></div>';
+    '<button class="btn-primary" onclick="pwDownloadPDF()">Download PDF</button>'+
+    '<button class="btn-secondary" onclick="pwStart()">Explore a different pathway</button></div>';
   return '<div class="step-screen qv-result active">'+
     '<div id="resultDoc">'+
       '<div class="results-header"><div class="res-label">Your Pathway</div><h2>'+P.title+'</h2></div>'+
@@ -695,21 +700,32 @@ function renderProfile(key){
     '</div>'+
     actions+
     '<div class="qv-result-foot">'+
-      '<div class="rf-copy">&copy;2026</div>'+
       '<button class="rf-home" onclick="pwExit()">Pathways for Arts Educator Development</button>'+
+      '<div class="rf-copy">&copy;2026 CREATE CA</div>'+
     '</div>'+
   '</div>';
 }
 
+// ⚠ PROVISIONAL region assignments — assigned from known campus/org locations, NOT independently verified. FLAG: review before launch.
+// Most uncertain: UC Santa Barbara & Westmont (Santa Barbara — Central vs Southern); National University, UMass Global, University of Phoenix, Alliant (online/multi-campus); Focus 5, Entertainment Community Fund, The Teaching Artist Institute, Alameda ILS cert (online vs place-based).
+const REGION_ORDER=['Northern California','Central California','Southern California','Online-Only'];
+const SCHOOL_REGION={
+  "Academy of Art University":"Northern California","Alameda County Office of Education":"Northern California","Alameda County Office of Education — Integrated Learning Specialist Certificate":"Northern California","Alternatives in Action":"Northern California","Cal Poly Humboldt":"Northern California","CSU Chico":"Northern California","CSU East Bay":"Northern California","CSU Sacramento":"Northern California","California State University, Sacramento":"Northern California","Davis Joint Unified School District":"Northern California","Dominican University of California":"Northern California","Luna Dance Institute — Professional Learning Institutes":"Northern California","Luther Burbank Center for the Arts — Teaching Artist Certificate":"Northern California","Notre Dame de Namur University":"Northern California","Pacific Union College":"Northern California","Sacramento County Office of Education":"Northern California","San Francisco State University":"Northern California","San Jose State University":"Northern California","Santa Clara University":"Northern California","Santa Rosa Junior College — Arts Education Assistant Certificate":"Northern California","Simpson University":"Northern California","Sonoma County Office of Education":"Northern California","Sonoma State University":"Northern California","St. Mary's College of California":"Northern California","Studio Pathways — Culturally Responsive Educator in the Arts (CCREA) Certificate":"Northern California","Sutter County Superintendent of Schools":"Northern California","Tehama County Department of Education":"Northern California","University of San Francisco":"Northern California","William Jessup University":"Northern California",
+  "CSU Bakersfield":"Central California","CSU Fresno":"Central California","CSU Stanislaus":"Central California","Fresno County Superintendent of Schools":"Central California","Fresno Pacific University":"Central California","Kern County Superintendent of Schools":"Central California","Teachers College of San Joaquin":"Central California","Tulare County Office of Education":"Central California","University of California, Santa Barbara":"Central California","University of the Pacific":"Central California","Westmont College":"Central California",
+  "Alliant International University":"Southern California","Arts Education Connection San Diego — Teaching Artist Institute":"Southern California","Azusa Pacific University":"Southern California","Biola University":"Southern California","CSU Dominguez Hills":"Southern California","CSU Fullerton":"Southern California","CSU Long Beach":"Southern California","CSU Northridge":"Southern California","CSU San Bernardino":"Southern California","California State University, San Bernardino":"Southern California","CSU San Marcos":"Southern California","Cal Poly Pomona":"Southern California","Cal State LA":"Southern California","California Baptist University":"Southern California","California Lutheran University":"Southern California","Chapman University":"Southern California","CoTA (Collaborations: Teachers and Artists) — Artist-Educator Institute":"Southern California","Concordia University Irvine":"Southern California","High Tech High":"Southern California","Hope International University":"Southern California","LACMA — Teaching Artist Training Series":"Southern California","La Sierra University":"Southern California","Los Angeles County Office of Education":"Southern California","Loyola Marymount University":"Southern California","Mount Saint Mary's University, Los Angeles":"Southern California","National University":"Southern California","Orange County Department of Education":"Southern California","P.S. ARTS x CalState LA — Teaching Artist Certificate Program":"Southern California","P.S. ARTS — Arts Integration Coach Training & Teaching Artist Summer Intensive":"Southern California","Pepperdine University":"Southern California","Point Loma Nazarene University":"Southern California","Riverside County Office of Education":"Southern California","San Diego County Office of Education":"Southern California","San Diego State University":"Southern California","The Master's University":"Southern California","The Music Center — Teaching Artist Training":"Southern California","UC Irvine, Claire Trevor School of the Arts — Certificate in Teaching Artistry":"Southern California","United States University":"Southern California","University of California, Irvine":"Southern California","University of California, Los Angeles":"Southern California","University of California, Riverside":"Southern California","University of La Verne":"Southern California","University of Massachusetts Global (UMass Global)":"Southern California","University of Redlands":"Southern California","University of San Diego":"Southern California","University of Southern California":"Southern California","Vanguard University":"Southern California","Ventura County Office of Education":"Southern California",
+  "Arts & Healing Initiative — Online Certificate in Social Emotional Arts":"Online-Only","Focus 5 — Teaching Artist Intensive":"Online-Only","The Entertainment Community Fund — Teaching Artist Program":"Online-Only","The Teaching Artist Institute":"Online-Only","University of Phoenix":"Online-Only"
+};
 function listHTML(P){
   const arr=((typeof PROGRAMS!=='undefined'&&PROGRAMS[P.list])?PROGRAMS[P.list]:[]).slice().sort(function(a,b){return a.n.localeCompare(b.n);});
   let flagged=false;
-  const items=arr.map(function(e){
-    if(e.f)flagged=true;
-    return '<a href="'+e.u+'" target="_blank" rel="noopener">'+e.n+(e.f?'<sup>&dagger;</sup>':'')+'</a>';
+  const groups={};
+  arr.forEach(function(e){ if(e.f)flagged=true; var r=SCHOOL_REGION[e.n]||'Southern California'; (groups[r]||(groups[r]=[])).push(e); });
+  const sections=REGION_ORDER.filter(function(r){return groups[r]&&groups[r].length;}).map(function(r){
+    var links=groups[r].map(function(e){return '<a href="'+e.u+'" target="_blank" rel="noopener">'+e.n+(e.f?'<sup>&dagger;</sup>':'')+'</a>';}).join('');
+    return '<div class="prog-region"><h3 class="prog-region-title">'+r.replace(' California','')+'</h3><div class="prog-list">'+links+'</div></div>';
   }).join('');
   const note=flagged?'<div class="prog-note"><span><sup>&dagger;</sup></span><span>State-approved program. This link opens the school\'s general credential page rather than a discipline-specific one &mdash; confirm program specifics with the school.</span></div>':'';
-  return '<p class="prog-intro">'+P.intro+'</p><div class="prog-list">'+items+'</div>'+note;
+  return '<p class="prog-intro">California-approved programs:</p>'+sections+note;
 }
 
 function suppHTML(){
