@@ -119,7 +119,19 @@
   .qv-cc:hover{background:rgba(0,38,71,.85)}
   .qv-cc.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
   .qv-cc.on:hover{background:var(--gold);opacity:.9}
-  .qv-replay-overlay{position:absolute;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,38,71,.62);-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
+  /* Text version (written equivalent of the video) — reading dialog */
+  .qv-textmodal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:4vh 5vw;background:rgba(0,18,38,.55);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+  .qv-textmodal.open{display:flex}
+  .qv-textmodal-card{position:relative;background:#fff;color:var(--navy);width:min(680px,100%);max-height:90vh;display:flex;flex-direction:column;border-radius:14px;box-shadow:0 24px 70px rgba(0,18,38,.4);overflow:hidden;animation:stepIn .25s ease}
+  .qv-textmodal-head{flex:0 0 auto;padding:1.5rem 1.7rem 1.1rem;border-bottom:1px solid rgba(0,38,71,.1)}
+  .qv-textmodal-head h3{font-family:var(--font-display);font-weight:400;font-size:1.7rem;letter-spacing:.02em;color:var(--navy);line-height:1.08;margin:0}
+  .qv-textmodal-x{position:absolute;top:1.1rem;right:1.1rem;width:34px;height:34px;border-radius:50%;border:none;background:var(--ice);color:var(--navy);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .15s}
+  .qv-textmodal-x:hover{background:rgba(0,38,71,.12)}
+  .qv-textmodal-x svg{width:14px;height:14px}
+  .qv-textmodal-body{flex:1;overflow-y:auto;padding:1.4rem 1.7rem 1.8rem}
+  .qv-textmodal-body p{font-size:1rem;line-height:1.7;color:var(--navy);margin-bottom:1rem}
+  .qv-textmodal-body p:last-child{margin-bottom:0}
+  .qv-replay-overlay{position:absolute;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;background:rgba(0,38,71,.62);-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
   .qv-replay-overlay .qv-replay-btn{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.55);color:#fff;font-family:var(--font-body);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.7rem 1.4rem;border-radius:100px;cursor:pointer;transition:background .15s}
   .qv-replay-overlay .qv-replay-btn:hover{background:rgba(255,255,255,.22)}
   .qv-replay-overlay .qv-replay-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
@@ -135,10 +147,10 @@
   .qv-opts button:hover{background:var(--gold);transform:translateY(-1px)}
   .qv-opts button.alt{background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:500;font-size:clamp(.74rem,3.7cqi,.85rem)}
   .qv-opts button.alt:hover{background:rgba(255,255,255,.14)}
-  .qv-endfoot{display:flex;flex-direction:column;align-items:center;gap:.15rem;margin-top:1.4rem}
-  .qv-replay{display:inline-flex;align-items:center;gap:.45rem;background:none;border:none;color:rgba(255,255,255,.7);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
-  .qv-replay:hover{color:var(--gold)}
-  .qv-replay svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .qv-endfoot{display:flex;flex-direction:column;align-items:center;gap:.35rem;margin-top:1.4rem}
+  .qv-replay,.qv-transcript{display:inline-flex;align-items:center;gap:.45rem;background:none;border:none;color:rgba(255,255,255,.7);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
+  .qv-replay:hover,.qv-transcript:hover{color:var(--gold)}
+  .qv-replay svg,.qv-transcript svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .qv-foot{margin-top:1.1rem;display:flex;align-items:center;justify-content:center;gap:1.6rem}
   .qv-backlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:var(--gold);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:opacity .15s}
   .qv-backlink:hover{opacity:.75}
@@ -165,7 +177,7 @@
     .qv-endfoot{display:none}
     .qv-foot{margin:0;padding:1.5rem 2rem 1.6rem}
     .qv-cc{left:auto;right:60px}
-    .qv-skip{display:none}
+    .qv-skip{left:14px;transform:none}
     .qv-window.ended .qv-replay-overlay{display:flex}
     .qv-window.ended .qv-mute,.qv-window.ended .qv-cc{display:none}
   }
@@ -431,6 +443,7 @@ const ICON_BACK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const ICON_SKIP='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,4 13,12 5,20"/><rect x="15" y="4" width="3" height="16"/></svg>';
 const ICON_REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.3"/><polyline points="3 4 3 9 8 9"/></svg>';
 const ICON_EXIT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+const ICON_DOC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>';
 const ICON_MUTED='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 L6 9 H3 V15 H6 L11 19 Z"/><line x1="16" y1="9.5" x2="21" y2="14.5"/><line x1="21" y1="9.5" x2="16" y2="14.5"/></svg>';
 const ICON_UNMUTED='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 L6 9 H3 V15 H6 L11 19 Z"/><path d="M15.4 8.8a4.6 4.6 0 0 1 0 6.4"/><path d="M18.2 6a8.6 8.6 0 0 1 0 12"/></svg>';
 const ICON_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg>';
@@ -439,7 +452,7 @@ const VP_DIR='images/video%20placeholder%20stills/';
 function vp(n){return VP_DIR+'vp_'+n+'.jpg';}  // %20 in VP_DIR — folder name has spaces
 
 const NODES={
-  welcome:{p:'Laurel & Ricky',img:[vp('laurel'),vp('ricky')],label:'Welcome',q:'What best describes you?',o:[
+  welcome:{p:'Laurel & Ricky',img:[vp('laurel'),vp('ricky')],label:'Welcome',text:['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.','Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi.','Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede.','Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. Maecenas aliquet mollis lectus. Pellentesque eget nisi a mi suscipit tincidunt ut tempus.'],q:'What best describes you?',o:[
     {t:'Credentialed Teacher (non-arts)',to:'suppAuth'},
     {t:'Teaching Artist',to:'cteIntro'},
     {t:'Artist',to:'taVsCred'},
@@ -586,11 +599,12 @@ function renderNode(n){
           '<button class="qv-skip" onclick="qvSkip(this)">Skip video '+ICON_SKIP+'</button>'+
           '<button class="qv-mute" data-muted="true" aria-label="Unmute video" onclick="qvMute(this)">'+ICON_MUTED+'</button>'+
           '<button class="qv-cc'+(PW_CC?' on':'')+'" aria-pressed="'+(PW_CC?'true':'false')+'" aria-label="Captions" onclick="qvCaptions(this)">CC</button>'+
-          '<div class="qv-replay-overlay"><button class="qv-replay-btn" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay video</button></div>'+
+          '<div class="qv-replay-overlay"><button class="qv-replay-btn" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay</button>'+(n.text?'<button class="qv-replay-btn" onclick="qvText(this)">'+ICON_DOC+' Transcript</button>':'')+'</div>'+
         '</div>'+
         '<div class="qv-end">'+prompt+'<div class="qv-opts">'+opts+'</div>'+
           '<div class="qv-endfoot">'+
-            '<button class="qv-replay" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay video</button>'+
+            '<button class="qv-replay" onclick="qvReplay(this)">'+ICON_REPLAY+' Replay</button>'+
+            (n.text?'<button class="qv-transcript" onclick="qvText(this)">'+ICON_DOC+' Transcript</button>':'')+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -598,6 +612,20 @@ function renderNode(n){
         '<button class="qv-backlink" onclick="pwBack()">'+ICON_BACK+' Back</button>'+
         '<button class="qv-exitlink" onclick="pwExit()">'+ICON_EXIT+' Exit</button>'+
       '</div>'+
+      (n.text?qvTextModal(n):'')+
+    '</div>'+
+  '</div>';
+}
+
+function qvTextModal(n){
+  var paras=(Array.isArray(n.text)?n.text:[n.text]).map(function(t){return '<p>'+t+'</p>';}).join('');
+  return '<div class="qv-textmodal" role="dialog" aria-modal="true" aria-label="Transcript" onclick="if(event.target===this)qvText(this)">'+
+    '<div class="qv-textmodal-card">'+
+      '<div class="qv-textmodal-head">'+
+        '<h3>Transcript</h3>'+
+        '<button class="qv-textmodal-x" aria-label="Close" onclick="qvText(this)">'+ICON_EXIT+'</button>'+
+      '</div>'+
+      '<div class="qv-textmodal-body">'+paras+'</div>'+
     '</div>'+
   '</div>';
 }
@@ -637,6 +665,13 @@ function qvTap(win,ev){
   if(v.paused){v.play().catch(function(){});win.classList.remove('paused');}
   else{v.pause();win.classList.add('paused');}
 }
+function qvText(el){
+  var root=el.closest('.qv-screen')||document;
+  var m=root.querySelector('.qv-textmodal');if(!m)return;
+  var open=m.classList.toggle('open');
+  if(open){var v=root.querySelector('.qv-video');if(v){try{v.pause();}catch(e){}}}  // pause video while reading
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.querySelector('.qv-textmodal.open');if(m)m.classList.remove('open');}});
 function qvMute(btn){
   var muted=btn.getAttribute('data-muted')!=='false';      // default muted
   muted=!muted;
