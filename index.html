@@ -94,9 +94,6 @@
   .step-screen.active{display:block}
   @keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-  .back-btn{display:inline-flex;align-items:center;gap:.3rem;background:none;border:none;font-family:var(--font-body);font-size:.624rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,38,71,.7);cursor:pointer;padding:0;margin-bottom:1.5rem;transition:color .15s}
-  .back-btn:hover{color:var(--blue)}
-  .back-btn svg{width:14px;height:14px;stroke:currentColor}
 
   /* === SURVEY: video screen + end-card === */
   .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100dvh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
@@ -158,10 +155,6 @@
   .qv-exitlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:rgba(255,255,255,.6);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
   .qv-exitlink:hover{color:#fff}
   .qv-exitlink svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-  .qv-ph{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem 1.4rem;background:linear-gradient(160deg,#3f7cba,#11538f);color:#fff}
-  .qv-ph-tag{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-  .qv-ph-title{font-family:var(--font-display);font-weight:400;font-size:clamp(1.7rem,11cqi,2.8rem);letter-spacing:.02em;line-height:1.04}
-  .qv-ph-sub{font-size:clamp(.9rem,5cqi,1.1rem);color:rgba(255,255,255,.82);margin-top:.55rem}
   /* Desktop / landscape: the whole block (header + video/questions + footer) is ONE rounded
      navy card, centered + floating on the ice page background — narrows focus on a big window.
      Header anchored to card top, footer to card bottom, both with buffers. */
@@ -191,20 +184,6 @@
   .results-header{background:var(--navy);color:var(--white);padding:1.75rem 2rem;border-radius:var(--r);margin-bottom:1.5rem}
   .results-header .res-label{font-family:var(--font-display);font-size:.85rem;letter-spacing:.15em;color:var(--gold);margin-bottom:.25rem}
   .results-header h2{font-family:var(--font-display);font-size:2rem;letter-spacing:.02em;line-height:1.05;color:var(--white);margin-bottom:0;font-weight:400}
-  .path-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:2rem}
-  .path-chip{display:inline-flex;align-items:center;gap:.35rem;background:var(--white);border:1px solid rgba(0,38,71,.1);border-radius:100px;padding:.35rem .85rem;font-size:.78rem;font-weight:500;color:var(--navy)}
-  .path-chip .chip-label{font-weight:700;text-transform:uppercase;font-size:.65rem;letter-spacing:.06em;color:rgba(0,38,71,.7);margin-right:.15rem}
-  .resources-section{margin-bottom:2.25rem}
-  .resources-section h3{font-family:var(--font-display);font-size:1.35rem;letter-spacing:.04em;color:var(--navy);margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:3px solid var(--blue);display:inline-block}
-  .resources-section p.section-desc{font-size:.88rem;color:var(--blue);line-height:1.55;margin-bottom:1rem}
-  .resource-card{background:var(--white);border:1px solid rgba(0,38,71,.08);border-left:4px solid rgba(0,38,71,.12);border-radius:0 var(--r) var(--r) 0;padding:1rem 1.15rem;margin-bottom:.5rem;transition:border-left-color .15s}
-  .resource-card:hover{border-left-color:var(--blue)}
-  .resource-card .rc-name{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
-  .resource-card .rc-name a{color:var(--blue);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
-  .resource-card .rc-name a:hover{border-bottom-color:var(--blue)}
-  .resource-card .rc-desc{font-size:.82rem;color:var(--blue);line-height:1.5}
-  .resource-card .rc-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
-  .rc-tag{font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .5rem;border-radius:100px;background:var(--ice);color:var(--blue)}
   /* Program list (multi-column, alphabetized) */
   .prog-intro{font-family:var(--font-body);font-weight:700;font-size:.78rem;color:rgba(0,38,71,.55);line-height:1.4;margin-bottom:1.4rem;text-align:left;text-transform:uppercase;letter-spacing:.08em}
   .prog-region{margin-bottom:1.6rem}
@@ -224,7 +203,6 @@
   .supp-content ol,.supp-content ul{margin:0 0 1rem 1.25rem}
   .supp-content li{margin-bottom:.5rem;line-height:1.55}
   .supp-content .supp-cta{margin-top:1.5rem}
-  .disclaimer-box{margin-top:2rem;padding:1rem 1.15rem;background:var(--white);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;font-size:.8rem;line-height:1.55;color:var(--blue)}
   .actions-row{display:flex;flex-direction:column;align-items:center;gap:.65rem;margin-top:2.5rem}
   .actions-row button{min-width:240px;justify-content:center}
   .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
@@ -259,7 +237,6 @@
     .hero-banner .hero-text h1{font-size:2.4rem}
     .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
     .step-screen{padding:2rem 1.25rem}
-    .prog-list{column-count:2}
   }
   @media(max-width:520px){
     .prog-list{column-count:1}
@@ -273,12 +250,11 @@
     .hero-scroll{display:none}
   }
   @media print{
-    footer,.actions-row,.back-btn,.qv-foot,.qv-result-foot,.hero-banner,#homeSections{display:none!important}
+    footer,.actions-row,.qv-foot,.qv-result-foot,.hero-banner,#homeSections{display:none!important}
     .step-screen{padding:0;max-width:100%}
     .results-header{background:var(--white)!important;color:var(--navy)!important;border:2px solid var(--navy)}
     .results-header .res-label{color:var(--blue)!important}
     .results-header h2{color:var(--navy)!important}
-    .resource-card{break-inside:avoid}
     .prog-list{column-count:2}
   }
 </style>
@@ -441,9 +417,14 @@
   </div>
 </footer>
 
-<script src="data/programs.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
 <script>
+// Program data: single source of truth is data/programs.json (fetched at runtime; no generated programs.js).
+let PROGRAMS={},PROGRAMS_LOADED=false;
+const PROGRAMS_READY=fetch('data/programs.json').then(function(r){return r.json();}).then(function(data){
+  Object.keys(data).forEach(function(k){ if(!Array.isArray(data[k]))return; PROGRAMS[k]=data[k].map(function(e){return {n:e.name,u:e.url,f:e.flag?1:0};}); });
+  PROGRAMS_LOADED=true;
+}).catch(function(){PROGRAMS_LOADED=true;});
 const ICON_BACK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>';
 const ICON_SKIP='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,4 13,12 5,20"/><rect x="15" y="4" width="3" height="16"/></svg>';
 const ICON_REPLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.3"/><polyline points="3 4 3 9 8 9"/></svg>';
@@ -509,12 +490,12 @@ const NODES={
 
 const PROFILES={
   supp:{title:'Supplementary Authorization',kind:'supp'},
-  ta:{title:'Teaching Artist',list:'teachingArtist',intro:'Programs that build the pedagogical skills to work as a teaching artist in schools and community settings:'},
-  cte:{title:'Career Technical Education (CTE) Credential',list:'cte',intro:'Approved providers offering the Designated Subjects CTE teaching credential for experienced artists and industry professionals:'},
-  music:{title:'Single Subject Credential in Music',list:'music',intro:'California-approved programs leading to a Single Subject Teaching Credential in Music:'},
-  theatre:{title:'Single Subject Credential in Theatre',list:'theatre',intro:'California-approved programs leading to a Single Subject Teaching Credential in Theatre:'},
-  dance:{title:'Single Subject Credential in Dance',list:'dance',intro:'California-approved programs leading to a Single Subject Teaching Credential in Dance:'},
-  art:{title:'Single Subject Credential in Visual Art',list:'art',intro:'California-approved programs leading to a Single Subject Teaching Credential in Art:'}
+  ta:{title:'Teaching Artist',list:'teachingArtist'},
+  cte:{title:'Career Technical Education (CTE) Credential',list:'cte'},
+  music:{title:'Single Subject Credential in Music',list:'music'},
+  theatre:{title:'Single Subject Credential in Theatre',list:'theatre'},
+  dance:{title:'Single Subject Credential in Dance',list:'dance'},
+  art:{title:'Single Subject Credential in Visual Art',list:'art'}
 };
 
 let history=[];
@@ -565,6 +546,11 @@ function showScreen(s,push){
   document.querySelector('footer').style.display='none';
   const app=document.getElementById('app');
   pwStopStillCycle();
+  if(s.t==='profile'&&!PROGRAMS_LOADED){           // program data still loading — interim, then render when ready
+    app.innerHTML='<div class="step-screen qv-result active" style="text-align:center;padding-top:4rem;color:var(--blue)">Loading…</div>';
+    PROGRAMS_READY.then(function(){ if(cur===s){ app.innerHTML=renderProfile(s.k); window.scrollTo({top:0,behavior:'instant'}); } });
+    return;
+  }
   app.innerHTML=(s.t==='node')?renderNode(NODES[s.k]):renderProfile(s.k);
   if(s.t==='node'){var _v=app.querySelector('.qv-video');if(_v){_v.play().catch(function(){});qvApplyCaptions(_v.closest('.qv-window'));}pwStartStillCycle(app);}
   window.scrollTo({top:0,behavior:'instant'});
@@ -586,13 +572,8 @@ function renderNode(n){
     return '<button class="'+(o.alt?'alt':'')+'" onclick="pwChoose(\''+o.to+'\')">'+o.t+'</button>';
   }).join('');
   var prompt=n.q?'<div class="qv-prompt">'+n.q+'</div>':'';
-  var media;
-  if(n.img){
-    var imgs=Array.isArray(n.img)?n.img:[n.img];
-    media=imgs.map(function(src,i){return '<img class="qv-still'+(i===0?' is-active':'')+'" src="'+src+'" alt="">';}).join('');
-  }else{
-    media='<div class="qv-ph"><div><div class="qv-ph-tag">Video placeholder</div><div class="qv-ph-title">'+n.label+'</div><div class="qv-ph-sub">'+n.p+'</div></div></div>';
-  }
+  var imgs=Array.isArray(n.img)?n.img:[n.img];
+  var media=imgs.map(function(src,i){return '<img class="qv-still'+(i===0?' is-active':'')+'" src="'+src+'" alt="">';}).join('');
   return '<div class="step-screen qv-screen active">'+
     '<div class="qv-group">'+
       '<div class="qv-title">Pathways for Arts Educator Development</div>'+
@@ -708,9 +689,9 @@ function renderProfile(key){
 
 // ⚠ PROVISIONAL region assignments — assigned from known campus/org locations, NOT independently verified. FLAG: review before launch.
 // Most uncertain: UC Santa Barbara & Westmont (Santa Barbara — Central vs Southern); National University, UMass Global, University of Phoenix, Alliant (online/multi-campus); Focus 5, Entertainment Community Fund, The Teaching Artist Institute, Alameda ILS cert (online vs place-based).
-const REGION_ORDER=['Northern California','Central California','Southern California','Online-Only'];
+const REGION_ORDER=['Northern California','Central California','Southern California','Online-Only','Unsorted'];
 const SCHOOL_REGION={
-  "Academy of Art University":"Northern California","Alameda County Office of Education":"Northern California","Alameda County Office of Education":"Northern California","Alternatives in Action":"Northern California","Cal Poly Humboldt":"Northern California","CSU Chico":"Northern California","CSU East Bay":"Northern California","CSU Sacramento":"Northern California","California State University, Sacramento":"Northern California","Davis Joint Unified School District":"Northern California","Dominican University of California":"Northern California","Luna Dance Institute":"Northern California","Luther Burbank Center for the Arts":"Northern California","Notre Dame de Namur University":"Northern California","Pacific Union College":"Northern California","Sacramento County Office of Education":"Northern California","San Francisco State University":"Northern California","San Jose State University":"Northern California","Santa Clara University":"Northern California","Santa Rosa Junior College":"Northern California","Simpson University":"Northern California","Sonoma County Office of Education":"Northern California","Sonoma State University":"Northern California","St. Mary's College of California":"Northern California","Studio Pathways":"Northern California","Sutter County Superintendent of Schools":"Northern California","Tehama County Department of Education":"Northern California","University of San Francisco":"Northern California","William Jessup University":"Northern California",
+  "Academy of Art University":"Northern California","Alameda County Office of Education":"Northern California","Alternatives in Action":"Northern California","Cal Poly Humboldt":"Northern California","CSU Chico":"Northern California","CSU East Bay":"Northern California","CSU Sacramento":"Northern California","California State University, Sacramento":"Northern California","Davis Joint Unified School District":"Northern California","Dominican University of California":"Northern California","Luna Dance Institute":"Northern California","Luther Burbank Center for the Arts":"Northern California","Notre Dame de Namur University":"Northern California","Pacific Union College":"Northern California","Sacramento County Office of Education":"Northern California","San Francisco State University":"Northern California","San Jose State University":"Northern California","Santa Clara University":"Northern California","Santa Rosa Junior College":"Northern California","Simpson University":"Northern California","Sonoma County Office of Education":"Northern California","Sonoma State University":"Northern California","St. Mary's College of California":"Northern California","Studio Pathways":"Northern California","Sutter County Superintendent of Schools":"Northern California","Tehama County Department of Education":"Northern California","University of San Francisco":"Northern California","William Jessup University":"Northern California",
   "CSU Bakersfield":"Central California","CSU Fresno":"Central California","CSU Stanislaus":"Central California","Fresno County Superintendent of Schools":"Central California","Fresno Pacific University":"Central California","Kern County Superintendent of Schools":"Central California","Teachers College of San Joaquin":"Central California","Tulare County Office of Education":"Central California","University of California, Santa Barbara":"Central California","University of the Pacific":"Central California","Westmont College":"Central California",
   "Alliant International University":"Southern California","Arts Education Connection San Diego":"Southern California","Azusa Pacific University":"Southern California","Biola University":"Southern California","CSU Dominguez Hills":"Southern California","CSU Fullerton":"Southern California","CSU Long Beach":"Southern California","CSU Northridge":"Southern California","CSU San Bernardino":"Southern California","California State University, San Bernardino":"Southern California","CSU San Marcos":"Southern California","Cal Poly Pomona":"Southern California","Cal State LA":"Southern California","California Baptist University":"Southern California","California Lutheran University":"Southern California","Chapman University":"Southern California","CoTA (Collaborations: Teachers and Artists)":"Southern California","Concordia University Irvine":"Southern California","High Tech High":"Southern California","Hope International University":"Southern California","LACMA":"Southern California","La Sierra University":"Southern California","Los Angeles County Office of Education":"Southern California","Loyola Marymount University":"Southern California","Mount Saint Mary's University, Los Angeles":"Southern California","National University":"Southern California","Orange County Department of Education":"Southern California","P.S. ARTS x CalState LA":"Southern California","P.S. ARTS":"Southern California","Pepperdine University":"Southern California","Point Loma Nazarene University":"Southern California","Riverside County Office of Education":"Southern California","San Diego County Office of Education":"Southern California","San Diego State University":"Southern California","The Master's University":"Southern California","The Music Center":"Southern California","UC Irvine, Claire Trevor School of the Arts":"Southern California","United States University":"Southern California","University of California, Irvine":"Southern California","University of California, Los Angeles":"Southern California","University of California, Riverside":"Southern California","University of La Verne":"Southern California","University of Massachusetts Global (UMass Global)":"Southern California","University of Redlands":"Southern California","University of San Diego":"Southern California","University of Southern California":"Southern California","Vanguard University":"Southern California","Ventura County Office of Education":"Southern California",
   "Arts & Healing Initiative":"Online-Only","Focus 5":"Online-Only","The Entertainment Community Fund":"Online-Only","The Teaching Artist Institute":"Online-Only","University of Phoenix":"Online-Only"
@@ -719,7 +700,7 @@ function listHTML(P){
   const arr=((typeof PROGRAMS!=='undefined'&&PROGRAMS[P.list])?PROGRAMS[P.list]:[]).slice().sort(function(a,b){return a.n.localeCompare(b.n);});
   let flagged=false;
   const groups={};
-  arr.forEach(function(e){ if(e.f)flagged=true; var r=SCHOOL_REGION[e.n]||'Southern California'; (groups[r]||(groups[r]=[])).push(e); });
+  arr.forEach(function(e){ if(e.f)flagged=true; var r=SCHOOL_REGION[e.n]||'Unsorted'; (groups[r]||(groups[r]=[])).push(e); });  // 'Unsorted' = visible safety net for any school missing from SCHOOL_REGION
   const sections=REGION_ORDER.filter(function(r){return groups[r]&&groups[r].length;}).map(function(r){
     var links=groups[r].map(function(e){return '<a href="'+e.u+'" target="_blank" rel="noopener">'+e.n+(e.f?'<sup>&dagger;</sup>':'')+'</a>';}).join('');
     return '<div class="prog-region"><h3 class="prog-region-title">'+r.replace(' California','')+'</h3><div class="prog-list">'+links+'</div></div>';
