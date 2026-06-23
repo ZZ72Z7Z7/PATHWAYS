@@ -23,14 +23,13 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
   /* === HERO === */
-  .hero-banner{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem;background:var(--navy)}
+  .hero-banner{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.9rem;background:var(--navy)}
   .hero-slides{position:absolute;inset:0;z-index:0}
   .hero-slide{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .8s ease-in-out}
   .hero-slide.is-active{opacity:1}
   .hero-banner::after{content:'';position:absolute;inset:0;background:rgba(0,38,71,.6);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);z-index:1}
   .hero-banner .hero-text{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem}
   .hero-banner .hero-text h1{font-family:var(--font-display);font-weight:400;font-size:4rem;letter-spacing:.03em;line-height:1.05;max-width:1250px}
-  .hero-banner .hero-sub{font-size:1.05rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,.85);max-width:450px;text-align:center;margin:.75rem auto 0}
   .hero-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:1rem 2.5rem;font-family:var(--font-body);font-size:clamp(.9rem,1.6vw,1.2rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:1.25rem}
   .hero-btn:hover{opacity:.9;transform:translateY(-2px)}
   .hero-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
@@ -77,14 +76,14 @@
   .stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;padding:2.5rem 0}
   .stat-item{text-align:center}
   .stat-item .stat-number{font-family:var(--font-display);font-size:3rem;color:var(--blue);line-height:1}
-  .stat-item .stat-label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,38,71,.7);margin-top:.3rem}
+  .stat-item .stat-label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,38,71,.7);margin-top:.3rem;line-height:1.35;min-height:2.7em}
 
   /* === FIND YOUR PATH === */
   .fyp-frame{display:flex;flex-direction:column;width:100%;max-width:444px;margin:2.25rem auto 0;padding:12px;background:linear-gradient(160deg,#013a68,var(--navy));border:1px solid rgba(254,207,67,.35);border-radius:10px;box-shadow:0 14px 36px rgba(0,38,71,.28)}
   .fyp-video{position:relative;display:flex;flex-direction:column;width:100%;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:var(--navy);container-type:inline-size}
   .fyp-video .fyp-loop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
   .fyp-video::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 45% at 50% 65%,rgba(0,38,71,.55) 0%,rgba(0,38,71,.15) 55%,rgba(0,38,71,0) 75%)}
-  .fyp-video .hero-btn{position:absolute;top:65%;left:50%;transform:translate(-50%,-50%);margin:0;justify-content:center;white-space:nowrap;min-width:66cqi;max-width:94cqi;font-size:clamp(1.05rem,6.9cqi,1.425rem);padding:clamp(.85rem,4.4cqi,1.25rem) clamp(.8rem,5.5cqi,1.9rem)}
+  .fyp-video .hero-btn{position:absolute;top:65%;left:50%;transform:translate(-50%,-50%);margin:0;justify-content:center;white-space:nowrap;min-width:66cqi;max-width:94cqi;padding:clamp(.85rem,4.4cqi,1.25rem) clamp(.8rem,5.5cqi,1.9rem)}
 
   /* === ABOUT === */
   .coalition-text{max-width:750px;margin:0 auto;text-align:center;font-size:.92rem;line-height:1.7;color:var(--blue)}
@@ -99,10 +98,9 @@
   .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100dvh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
   .qv-group{width:100%;container-type:inline-size;display:flex;flex-direction:column;align-items:center}
   .qv-stage{position:relative;width:100%}
-  .qv-title{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-display);font-weight:400;color:#fff;font-size:5.85cqw;letter-spacing:.04em;line-height:1.05;margin-bottom:.3rem}
-  .qv-subtitle{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-body);font-weight:600;text-transform:uppercase;color:var(--gold);font-size:2.5cqw;letter-spacing:.16em;line-height:1.1;margin-bottom:1rem}
+  .qv-subtitle{align-self:stretch;text-align:center;white-space:nowrap;font-family:var(--font-body);font-weight:600;text-transform:uppercase;color:var(--gold);font-size:4.37cqw;letter-spacing:.16em;line-height:1.1;margin-bottom:1rem}
   .step-screen.qv-screen.active{display:flex}
-  .qv-window{position:relative;container-type:inline-size;width:100%;aspect-ratio:9/16;max-height:calc(100dvh - 124px);border-radius:0;overflow:hidden;background:var(--navy)}
+  .qv-window{position:relative;container-type:inline-size;width:100%;aspect-ratio:9/16;max-height:calc(100dvh - 100px);border-radius:0;overflow:hidden;background:var(--navy)}
   .qv-video,.qv-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;background:var(--navy)}
   .qv-still{opacity:0}
   .qv-still.is-active{opacity:1}
@@ -149,10 +147,10 @@
   .qv-replay:hover,.qv-transcript:hover{color:var(--gold)}
   .qv-replay svg,.qv-transcript svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .qv-foot{margin-top:1.1rem;display:flex;align-items:center;justify-content:center;gap:1.6rem}
-  .qv-backlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:var(--gold);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:opacity .15s}
+  .qv-backlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:var(--gold);font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:opacity .15s}
   .qv-backlink:hover{opacity:.75}
   .qv-backlink svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-  .qv-exitlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:rgba(255,255,255,.6);font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
+  .qv-exitlink{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:rgba(255,255,255,.6);font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:.35rem;transition:color .15s}
   .qv-exitlink:hover{color:#fff}
   .qv-exitlink svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
   /* Desktop / landscape: the whole block (header + video/questions + footer) is ONE rounded
@@ -161,8 +159,7 @@
   @media(orientation:landscape) and (min-width:720px){
     .step-screen.qv-screen{padding:3vh 2vw;background:var(--ice)}
     .qv-group{--vidH:min(70vh,800px,calc(100dvh - 280px));--panelW:min(42vw,440px);--colGap:2.75rem;width:auto;max-width:min(94vw,1040px);background:var(--navy);border-radius:18px;box-shadow:0 18px 50px rgba(0,38,71,.22);justify-content:flex-start;container-type:normal}
-    .qv-title{align-self:stretch;width:100%;margin:0;padding:1.2rem 1.5rem .15rem;font-size:calc((var(--vidH) * 9 / 16 + var(--colGap) + var(--panelW)) * .0488)}
-    .qv-subtitle{align-self:stretch;width:100%;margin:0;padding:0 1.5rem .2rem;font-size:clamp(.72rem,1vw,.92rem);letter-spacing:.18em}
+    .qv-subtitle{align-self:stretch;width:100%;margin:0;padding:1.3rem 1.5rem .2rem;font-size:calc((var(--vidH) * 9 / 16 + var(--colGap) + var(--panelW)) * .0314);letter-spacing:.18em}
     .qv-stage{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:var(--colGap);width:auto;max-width:none;margin:0;padding:1.7rem 2rem 0}
     .qv-window{width:auto;height:var(--vidH);aspect-ratio:9/16;max-height:none;border-radius:12px}
     .qv-end{position:static;inset:auto;display:flex!important;width:var(--panelW);background:none;overflow:visible;padding:0;justify-content:center}
@@ -235,7 +232,6 @@
     .audience-card{width:100%}
     .quote-slide{flex-direction:column;text-align:center;gap:1.25rem}
     .hero-banner .hero-text h1{font-size:2.4rem}
-    .hero-banner .hero-sub{font-size:.9rem;max-width:90%}
     .step-screen{padding:2rem 1.25rem}
   }
   @media(max-width:520px){
@@ -245,7 +241,6 @@
   @media(orientation:landscape) and (max-height:500px){
     .hero-banner{gap:.6rem}
     .hero-banner .hero-text h1{font-size:1.7rem}
-    .hero-banner .hero-sub{font-size:.82rem;margin-top:.4rem}
     .hero-btn{margin-top:.6rem;padding:.7rem 1.8rem}
     .hero-scroll{display:none}
   }
@@ -275,9 +270,8 @@
   </div>
   <div class="hero-text">
     <h1>Find Your Path<br>as an Arts Educator<br>in California</h1>
-    <p class="hero-sub">Get connected to resources matching<br>your skills, interests, and experience</p>
   </div>
-  <button class="hero-btn" onclick="pwStart()">Start Now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+  <button class="hero-btn" onclick="pwStart()">Take the Questionnaire <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
   <button class="hero-scroll" aria-label="Scroll to content" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M12 9 L24 15 L36 9"/></svg></button>
 </div>
 
@@ -300,7 +294,7 @@
     <div class="content-wrap">
       <h2 class="section-title">California Proposition 28</h2>
       <div class="stats-row" style="max-width:680px;margin:0 auto;">
-        <div class="stat-item"><div class="stat-number">$1B</div><div class="stat-label">In Annual Funding<br>for Arts Education</div></div>
+        <div class="stat-item"><div class="stat-number">$1B</div><div class="stat-label">Annual Funding for Arts Education</div></div>
         <div class="stat-item"><div class="stat-number">5,400+</div><div class="stat-label">New Arts Educators Needed</div></div>
       </div>
     </div>
@@ -312,19 +306,19 @@
       <h2 class="section-title" style="margin-bottom:2.5rem;">Who Is This For?</h2>
       <div class="audience-grid">
         <div class="audience-card">
-          <svg class="ac-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="11" y="39" width="42" height="11" rx="2" fill="var(--navy)"/><rect x="14" y="28" width="42" height="11" rx="2" fill="var(--blue)"/><rect x="9" y="17" width="42" height="11" rx="2" fill="var(--gold)"/><rect x="15" y="42" width="3.5" height="5" rx="1" fill="var(--gold)"/><rect x="18" y="31" width="3.5" height="5" rx="1" fill="var(--white)"/><rect x="13" y="20" width="3.5" height="5" rx="1" fill="var(--navy)"/></svg>
-          <h4>Students</h4>
-          <p>Navigate your college search and credentialing process with support and confidence.</p>
-        </div>
-        <div class="audience-card">
           <svg class="ac-icon" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="31" rx="23" ry="19" fill="var(--white)" stroke="var(--navy)" stroke-width="2.5"/><ellipse cx="23" cy="40" rx="3.6" ry="3.2" fill="var(--ice)" stroke="var(--navy)" stroke-width="1.5"/><circle cx="21" cy="24" r="3.4" fill="#E23B3B"/><circle cx="30" cy="19" r="3.4" fill="#EE7B2E"/><circle cx="39" cy="19" r="3.4" fill="var(--gold)"/><circle cx="46" cy="27" r="3.4" fill="#2FA84F"/><circle cx="44" cy="37" r="3.4" fill="var(--blue)"/></svg>
           <h4>Artists</h4>
-          <p>Bring your creative practice into the classroom as a teaching artist or credentialed educator.</p>
+          <p>Bring your creative practice into the classroom as a teaching artist or credentialed educator</p>
+        </div>
+        <div class="audience-card">
+          <svg class="ac-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="11" y="39" width="42" height="11" rx="2" fill="var(--navy)"/><rect x="14" y="28" width="42" height="11" rx="2" fill="var(--blue)"/><rect x="9" y="17" width="42" height="11" rx="2" fill="var(--gold)"/><rect x="15" y="42" width="3.5" height="5" rx="1" fill="var(--gold)"/><rect x="18" y="31" width="3.5" height="5" rx="1" fill="var(--white)"/><rect x="13" y="20" width="3.5" height="5" rx="1" fill="var(--navy)"/></svg>
+          <h4>Students</h4>
+          <p>Navigate your college search and credentialing process with support and confidence</p>
         </div>
         <div class="audience-card">
           <svg class="ac-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 23c-3-3-8-4-12-1-6 4-7 15-3 24 2 5 6 9 9 9 2 0 3-1 6-1s4 1 6 1c3 0 7-4 9-9 4-9 3-20-3-24-4-3-9-2-12 1Z" fill="#E23B3B"/><path d="M32 23c0-5 1-9 4-11" fill="none" stroke="var(--navy)" stroke-width="3" stroke-linecap="round"/><path d="M34 17c2-4 7-6 11-5 .3 4-3 8-8 8-2 0-3-1-3-3Z" fill="#2FA84F"/></svg>
           <h4>Teachers</h4>
-          <p>Add an arts credential or pursue further professional development to expand your skills as an educator.</p>
+          <p>Add an arts credential or pursue further professional development to expand your skills as an educator</p>
         </div>
       </div>
     </div>
@@ -397,7 +391,7 @@
           <video class="fyp-loop" autoplay loop muted playsinline preload="metadata" poster="images/survey_preview_V1_thumb.jpg">
             <source src="video/survey_preview_V1.mp4" type="video/mp4">
           </video>
-          <button class="hero-btn" onclick="pwStart()">Start Now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+          <button class="hero-btn" onclick="pwStart()">Take the Questionnaire <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
         </div>
       </div>
     </div>
@@ -576,8 +570,7 @@ function renderNode(n){
   var media=imgs.map(function(src,i){return '<img class="qv-still'+(i===0?' is-active':'')+'" src="'+src+'" alt="">';}).join('');
   return '<div class="step-screen qv-screen active">'+
     '<div class="qv-group">'+
-      '<div class="qv-title">Pathways for Arts Educator Development</div>'+
-      '<div class="qv-subtitle">Interactive Questionnaire</div>'+
+      '<div class="qv-subtitle">Pathways Questionnaire</div>'+
       '<div class="qv-stage">'+
         '<div class="qv-window" onclick="qvTap(this,event)">'+
           media+
