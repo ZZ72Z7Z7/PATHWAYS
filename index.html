@@ -402,7 +402,6 @@
   </div>
 </footer>
 
-<script defer src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
 <script>
 // Program data: single source of truth is data/programs.json (fetched at runtime; no generated programs.js).
 let PROGRAMS={},PROGRAMS_LOADED=false;
@@ -502,20 +501,7 @@ function pwStartStillCycle(app){           // multi-presenter nodes: crossfade s
 function pwStart(){history=[];cur=null;showScreen({t:'node',k:'welcome'},false);}
 
 function pwDownloadPDF(){
-  var el=document.getElementById('resultDoc');
-  if(!el)return;
-  // iOS Safari mishandles html2pdf's blob-download click (opens tabs, drops file).
-  // On mobile / touch, hand off to the native print-to-PDF flow instead.
-  var isMobile=window.matchMedia('(max-width: 768px)').matches||window.matchMedia('(pointer: coarse)').matches;
-  if(isMobile||typeof html2pdf==='undefined'){window.print();return;}
-  var name=(cur&&cur.k&&PROFILES[cur.k])?PROFILES[cur.k].title:'Pathways Result';
-  html2pdf().set({
-    margin:[10,10,10,10],
-    filename:name.replace(/[^\w]+/g,'_')+'.pdf',
-    image:{type:'jpeg',quality:0.95},
-    html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},
-    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-  }).from(el).save();
+  window.print();
 }
 
 function pwExit(){
@@ -662,7 +648,7 @@ function renderProfile(key){
   const suppCTA=(P.kind==='supp')?'<a class="btn-primary" href="https://www.ctc.ca.gov/credentials/leaflets/cl-629/" target="_blank" rel="noopener">Full details at the CTC &#8599;</a>':'';
   const actions='<div class="actions-row">'+
     suppCTA+
-    '<button class="btn-primary" onclick="pwDownloadPDF()">Download PDF</button>'+
+    '<button class="btn-primary" onclick="pwDownloadPDF()">Print / Save PDF</button>'+
     '<button class="btn-secondary" onclick="pwStart()">Explore a different pathway</button></div>';
   return '<div class="step-screen qv-result active">'+
     '<div id="resultDoc">'+
