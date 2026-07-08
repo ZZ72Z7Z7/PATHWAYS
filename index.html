@@ -200,9 +200,9 @@
   .supp-content ol,.supp-content ul{margin:0 0 1rem 1.25rem}
   .supp-content li{margin-bottom:.5rem;line-height:1.55}
   .supp-content .supp-cta{margin-top:1.5rem}
-  .actions-row{display:flex;flex-direction:column;align-items:center;gap:.65rem;margin-top:2.5rem}
+  .actions-row{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-top:2.5rem}
   .actions-row button{min-width:240px;justify-content:center}
-  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s,transform .1s}
+  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;line-height:1;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:opacity .15s,transform .1s}
   .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
   .btn-secondary{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--navy);border:2px solid rgba(0,38,71,.15);border-radius:var(--r);padding:.7rem 1.3rem;font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .15s,color .15s}
   .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
@@ -210,7 +210,7 @@
   .qv-result{max-width:900px;padding-top:3rem}
   .qv-result .results-header{border-radius:18px;box-shadow:0 14px 40px rgba(0,38,71,.18);text-align:center;padding:1.6rem 2rem;margin-bottom:1.875rem}
   .qv-result .results-header .res-label{font-family:var(--font-body);font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-size:.8rem;margin-bottom:.4rem}
-  .qv-result-foot{text-align:center;margin-top:3.75rem}
+  .qv-result-foot{text-align:center;margin-top:2.5rem}
   .qv-result-foot .rf-home{background:none;border:none;cursor:pointer;font-family:var(--font-display);font-weight:400;font-size:1.1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
   .qv-result-foot .rf-home:hover{color:var(--blue);text-decoration-color:var(--blue)}
   .qv-result-foot .rf-copy{font-family:var(--font-body);font-size:.72rem;color:rgba(0,38,71,.55);letter-spacing:.04em;margin-top:.35rem}
@@ -346,7 +346,7 @@
           <figure class="quote-slide">
             <div class="quote-photo"><img loading="lazy" src="images/PAED_taylor_moore_1X1.jpg" alt="Taylor Moore" width="120" height="120"></div>
             <div class="quote-body">
-              <blockquote class="quote-text">“I hold a Dance Teaching Credential, a Physical Education Credential, and a Career Technical Education (CTE) Credential in Arts, Media, and Entertainment. The arts often serve as more than just an academic subject; they become a source of inspiration, self-expression, and belonging. For some students, their performing arts class is the reason they look forward to coming to school each day. It is a place where they can feel supported, valued, and free to express themselves creatively. I believe that every student deserves access to a positive and enriching environment where they can build confidence, discover their strengths, and experience success.”</blockquote>
+              <blockquote class="quote-text">“I hold a Dance Teaching Credential, a Physical Education Credential, and a Career Technical Education (CTE) Credential in Arts, Media, and Entertainment. The arts often serve as more than just an academic subject; they become a source of inspiration, self-expression, and belonging. For some students, their performing arts class is the reason they look forward to coming to school each day. It is a place where they can feel supported, valued, and free to express themselves.”</blockquote>
               <figcaption class="quote-cite"><strong>Taylor Moore</strong>, <span class="quote-role">Dance Teacher, Ventura High School</span></figcaption>
             </div>
           </figure>
@@ -503,7 +503,11 @@ function pwStart(){history=[];cur=null;showScreen({t:'node',k:'welcome'},false);
 
 function pwDownloadPDF(){
   var el=document.getElementById('resultDoc');
-  if(!el||typeof html2pdf==='undefined'){window.print();return;}   // fallback if lib not loaded
+  if(!el)return;
+  // iOS Safari mishandles html2pdf's blob-download click (opens tabs, drops file).
+  // On mobile / touch, hand off to the native print-to-PDF flow instead.
+  var isMobile=window.matchMedia('(max-width: 768px)').matches||window.matchMedia('(pointer: coarse)').matches;
+  if(isMobile||typeof html2pdf==='undefined'){window.print();return;}
   var name=(cur&&cur.k&&PROFILES[cur.k])?PROFILES[cur.k].title:'Pathways Result';
   html2pdf().set({
     margin:[10,10,10,10],
@@ -655,7 +659,9 @@ function qvMute(btn){
 function renderProfile(key){
   const P=PROFILES[key];
   const body=(P.kind==='supp')?suppHTML():listHTML(P);
+  const suppCTA=(P.kind==='supp')?'<a class="btn-primary" href="https://www.ctc.ca.gov/credentials/leaflets/cl-629/" target="_blank" rel="noopener">Full details at the CTC &#8599;</a>':'';
   const actions='<div class="actions-row">'+
+    suppCTA+
     '<button class="btn-primary" onclick="pwDownloadPDF()">Download PDF</button>'+
     '<button class="btn-secondary" onclick="pwStart()">Explore a different pathway</button></div>';
   return '<div class="step-screen qv-result active">'+
@@ -710,7 +716,6 @@ function suppHTML(){
       '<li><strong>Multiple Subject credential holders</strong> can add a Supplementary Authorization, allowing you to teach arts in grade 9 and below. College coursework required: 20 semester units, or 10 upper-division units, in the content area.</li>'+
     '</ol>'+
     '<p><strong>For Administrators &mdash; "Out of the Box" pathways:</strong> Teachers credentialed in English and PE before January 2022 are eligible to teach Dance with a PE credential, or Theatre with an English credential.</p>'+
-    '<div class="supp-cta"><a class="btn-primary" href="https://www.ctc.ca.gov/credentials/leaflets/cl-629/" target="_blank" rel="noopener">Full details at the CTC &#8599;</a></div>'+
     '</div>';
 }
 
