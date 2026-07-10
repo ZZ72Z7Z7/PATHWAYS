@@ -645,9 +645,7 @@ function qvMute(btn){
 function renderProfile(key){
   const P=PROFILES[key];
   const body=(P.kind==='supp')?suppHTML():listHTML(P);
-  const suppCTA=(P.kind==='supp')?'<a class="btn-primary" href="https://www.ctc.ca.gov/credentials/leaflets/cl-629/" target="_blank" rel="noopener">Full details at the CTC &#8599;</a>':'';
   const actions='<div class="actions-row">'+
-    suppCTA+
     '<button class="btn-primary" onclick="pwDownloadPDF()">Print / Save PDF</button>'+
     '<button class="btn-secondary" onclick="pwStart()">Explore a different pathway</button></div>';
   return '<div class="step-screen qv-result active">'+
@@ -688,20 +686,23 @@ function listHTML(P){
 
 function suppHTML(){
   return '<div class="supp-content">'+
-    '<p>If you hold a teaching credential, there are fairly simple pathways to becoming a credentialed arts teacher.</p>'+
-    '<p>If you are the holder of a valid Clear or Life Multiple Subject Teaching Credential and are seeking a Clear Single Subject Teaching Credential, you will need to complete:</p>'+
-    '<ul>'+
-      '<li>Content-area subject-matter competence &mdash; through the CSET exam, previously completed undergraduate/graduate coursework or a degree major in the specific field, or a combination of both.</li>'+
-      '<li>A 3-semester-unit or 4-quarter-unit course in methodology directly related to teaching in a departmentalized setting in the specific content area sought.</li>'+
-      '<li>Possession of an English learner authorization.</li>'+
-      '<li>A completed application and processing fee.</li>'+
-    '</ul>'+
-    '<p>Additional pathways depending on your current credential:</p>'+
+    '<p>If you already hold a non-arts teaching credential, there are fairly simple pathways to becoming a credentialed arts teacher:</p>'+
     '<ol>'+
-      '<li><strong>Single Subject credential holders</strong> can add a specific Supplementary Authorization, comparable to a Single Subject Credential. This authorization is not limited by grade or curriculum, only by subject.</li>'+
-      '<li><strong>Multiple Subject credential holders</strong> can add a Supplementary Authorization, allowing you to teach arts in grade 9 and below. College coursework required: 20 semester units, or 10 upper-division units, in the content area.</li>'+
+      '<li><strong>Multiple Subject Credential</strong> holders can add a Supplementary Authorization, allowing you to teach arts in grade 9 and below. College coursework required: 20 semester units or 10 upper-division units in the content area.</li>'+
+      '<li><strong>Single Subject Credential</strong> holders can add a Specific Supplementary Authorization, comparable to a Single Subject Credential. This authorization is not limited by grade, only by subject.</li>'+
+      '<li>For <strong>Multiple Subject Credential holders who are seeking a Single Subject Credential</strong>, the process is the same for adding any second credential &mdash; show subject matter competency and take a one-semester teaching methods course in the credential area from an approved teacher credential program.'+
+        '<p>Subject matter competency can be demonstrated in one of three ways:</p>'+
+        '<ol type="a">'+
+          '<li>an undergraduate or graduate degree in the field</li>'+
+          '<li>taking the CSET exams</li>'+
+          '<li>a combination of college coursework and one CSET</li>'+
+        '</ol>'+
+        '<p>Select <em>Explore a Different Pathway</em> below to learn more.</p>'+
+      '</li>'+
     '</ol>'+
-    '<p><strong>For Administrators &mdash; "Out of the Box" pathways:</strong> Teachers credentialed in English and PE before January 2022 are eligible to teach Dance with a PE credential, or Theatre with an English credential.</p>'+
+    '<p><strong>Interested in teaching Performing Arts?</strong> Currently, <a href="https://www.csueastbay.edu/theatre/theatre-and-dance-credential-program.html" target="_blank" rel="noopener">Cal State East Bay</a> is the only program offering dance and theatre methods courses in Extended Education for non-matriculated students.<br>Please note: Teachers credentialed in English before Jan 2022 are eligible to teach theatre, and teachers credentialed in PE before Jan 2022 are eligible to teach dance!</p>'+
+    '<p><strong>Interested in teaching Visual Art?</strong> Teachers who want to add a Single Subject Teaching Credential in Visual Art can do so through the <a href="https://theartofeducation.edu/university/masters/california-single-subject-credential-in-art/" target="_blank" rel="noopener">Art of Education University</a> online program.</p>'+
+    '<p>More info at the <a href="https://www.ctc.ca.gov/credentials/leaflets/cl-629/" target="_blank" rel="noopener">California Commission on Teacher Credentialing &#8599;</a></p>'+
     '</div>';
 }
 
