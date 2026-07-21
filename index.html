@@ -93,7 +93,6 @@
   .step-screen.active{display:block}
   @keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-
   /* === SURVEY: video screen + end-card === */
   .step-screen.qv-screen{position:relative;width:100%;max-width:none;min-height:100dvh;margin:0;padding:1rem 0;flex-direction:column;align-items:center;justify-content:center;background:var(--navy)}
   .qv-group{width:100%;container-type:inline-size;display:flex;flex-direction:column;align-items:center}
@@ -199,7 +198,6 @@
   .supp-content p{margin-bottom:1rem}
   .supp-content ol,.supp-content ul{margin:0 0 1rem 1.25rem}
   .supp-content li{margin-bottom:.5rem;line-height:1.55}
-  .supp-content .supp-cta{margin-top:1.5rem}
   .actions-row{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-top:2.5rem}
   .actions-row button{min-width:240px;justify-content:center}
   .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);border:none;border-radius:var(--r);padding:.85rem 1.8rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;line-height:1;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:opacity .15s,transform .1s}
@@ -282,7 +280,8 @@
     <div class="content-wrap">
       <h2 class="section-title">About This Initiative</h2>
       <div class="coalition-text">
-        <p>Pathways for Arts Educator Development was created in response to <a href="https://www.cde.ca.gov/eo/in/prop28artsandmusicedfunding.asp">Proposition 28 (The Arts and Music in Schools Act)</a>, to address the shortage of qualified arts educators in California's public schools. This initiative brings together universities, professional associations, community-based organizations and advocacy groups to illuminate clear, accessible pathways into arts education careers.</p>
+        <p>Pathways for Arts Educator Development was created in response to <a href="https://www.cde.ca.gov/eo/in/prop28artsandmusicedfunding.asp">Proposition 28 (The Arts and Music in Schools Act)</a>, to address the shortage of qualified arts educators in California's public schools.</p>
+        <p style="margin-top:1rem;">This initiative brings together universities, professional associations, community-based organizations and advocacy groups to illuminate clear, accessible pathways into arts education careers.</p>
         <p style="margin-top:1rem;">Whether you want to become a credentialed classroom teacher or work as a teaching artist in schools and community settings, this tool will help you find programs, resources and professional development opportunities that match your background and support your goals.</p>
       </div>
     </div>
@@ -404,10 +403,10 @@
 
 <script>
 // Program data: single source of truth is data/programs.json (fetched at runtime; no generated programs.js).
-let PROGRAMS={},PROGRAMS_LOADED=false;
+let PROGRAMS={},PROGRAMS_LOADED=false,PROGRAMS_OK=false;   // PROGRAMS_OK: fetch+parse succeeded (distinguishes failure from an empty list)
 const PROGRAMS_READY=fetch('data/programs.json').then(function(r){return r.json();}).then(function(data){
   Object.keys(data).forEach(function(k){ if(!Array.isArray(data[k]))return; PROGRAMS[k]=data[k].map(function(e){return {n:e.name,u:e.url,f:e.flag?1:0};}); });
-  PROGRAMS_LOADED=true;
+  PROGRAMS_OK=true;PROGRAMS_LOADED=true;
 }).catch(function(){PROGRAMS_LOADED=true;});
 const ICON_BACK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>';
 const ICON_SKIP='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,4 13,12 5,20"/><rect x="15" y="4" width="3" height="16"/></svg>';
@@ -417,7 +416,6 @@ const ICON_DOC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 const ICON_MUTED='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 L6 9 H3 V15 H6 L11 19 Z"/><line x1="16" y1="9.5" x2="21" y2="14.5"/><line x1="21" y1="9.5" x2="16" y2="14.5"/></svg>';
 const ICON_UNMUTED='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 L6 9 H3 V15 H6 L11 19 Z"/><path d="M15.4 8.8a4.6 4.6 0 0 1 0 6.4"/><path d="M18.2 6a8.6 8.6 0 0 1 0 12"/></svg>';
 const ICON_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg>';
-const PLACEHOLDER_VIDEO='video/survey_preview_V1.mp4';
 const VP_DIR='images/video%20placeholder%20stills/';
 function vp(n){return VP_DIR+'vp_'+n+'.jpg';}  // %20 in VP_DIR — folder name has spaces
 
@@ -482,7 +480,7 @@ const PROFILES={
   art:{title:'Single Subject Credential in Visual Art',list:'art'}
 };
 
-let history=[];
+let navStack=[];
 let cur=null;
 var PW_CC=(function(){try{return localStorage.getItem('pwCaptions')==='1';}catch(e){return false;}})();  // captions on/off, persisted
 var pwImgTimer=null;
@@ -498,14 +496,14 @@ function pwStartStillCycle(app){           // multi-presenter nodes: crossfade s
   },3000);
 }
 
-function pwStart(){history=[];cur=null;showScreen({t:'node',k:'welcome'},false);}
+function pwStart(){navStack=[];cur=null;showScreen({t:'node',k:'welcome'},false);}
 
 function pwDownloadPDF(){
   window.print();
 }
 
 function pwExit(){
-  cur=null;history=[];pwStopStillCycle();
+  cur=null;navStack=[];pwStopStillCycle();
   document.getElementById('app').innerHTML='';
   document.getElementById('heroBanner').style.display='';
   document.getElementById('homeSections').style.display='';
@@ -514,7 +512,7 @@ function pwExit(){
 }
 
 function showScreen(s,push){
-  if(push!==false&&cur)history.push(cur);
+  if(push!==false&&cur)navStack.push(cur);
   cur=s;
   document.getElementById('heroBanner').style.display='none';
   document.getElementById('homeSections').style.display='none';
@@ -538,11 +536,13 @@ function pwChoose(to){
 }
 
 function pwBack(){
-  if(!history.length){pwExit();return;}
-  const prev=history.pop();cur=null;showScreen(prev,false);
+  if(!navStack.length){pwExit();return;}
+  const prev=navStack.pop();cur=null;showScreen(prev,false);
 }
 
 function renderNode(n){
+  // ⚠ o.to is interpolated into an inline onclick JS string — routing keys must stay
+  // quote-free (plain ids like 'cteIntro' / '@dance'). An apostrophe here breaks the button.
   var opts=n.o.map(function(o){
     return '<button class="'+(o.alt?'alt':'')+'" onclick="pwChoose(\''+o.to+'\')">'+o.t+'</button>';
   }).join('');
@@ -597,7 +597,6 @@ function qvShowEnd(win){
   var end=stage?stage.querySelector('.qv-end'):null;
   if(end)end.classList.add('show');                        // portrait: reveal questions overlay
 }
-function qvEnded(v){qvShowEnd(v.closest('.qv-window'));}
 function qvSkip(btn){qvShowEnd(btn.closest('.qv-window'));}
 function qvReplay(btn){
   var stage=btn.closest('.qv-stage');
@@ -671,6 +670,7 @@ const SCHOOL_REGION={
   "Arts & Healing Initiative":"Online-Only","Focus 5":"Online-Only","The Entertainment Community Fund":"Online-Only","The Teaching Artist Institute":"Online-Only","University of Phoenix":"Online-Only"
 };
 function listHTML(P){
+  if(!PROGRAMS_OK)return '<div class="prog-note"><span>The program list is temporarily unavailable. Please refresh the page to try again. If the problem persists, contact <a href="mailto:info@createca.org">info@createca.org</a>.</span></div>';
   const arr=((typeof PROGRAMS!=='undefined'&&PROGRAMS[P.list])?PROGRAMS[P.list]:[]).slice().sort(function(a,b){return a.n.localeCompare(b.n);});
   let flagged=false;
   const groups={};
