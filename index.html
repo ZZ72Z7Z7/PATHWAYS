@@ -480,8 +480,7 @@ const PROFILES={
   art:{title:'Single Subject Credential in Visual Art',list:'art'}
 };
 
-let navStack=[];
-let cur=null;
+let cur=null;   // current screen state object, or null on the home page
 var PW_CC=(function(){try{return localStorage.getItem('pwCaptions')==='1';}catch(e){return false;}})();  // captions on/off, persisted
 var pwImgTimer=null;
 function pwStopStillCycle(){if(pwImgTimer){clearInterval(pwImgTimer);pwImgTimer=null;}}
@@ -496,14 +495,28 @@ function pwStartStillCycle(app){           // multi-presenter nodes: crossfade s
   },3000);
 }
 
-function pwStart(){navStack=[];cur=null;showScreen({t:'node',k:'welcome'},false);}
+function pwStart(){pwGo({t:'node',k:'welcome'});}
+
+// Forward navigation: render the screen AND record it as a browser history entry, so the
+// browser Back/Forward buttons walk the questionnaire exactly like the on-screen Back does.
+// state.i is depth from home (home=0); pwExit uses it to unwind to home in one hop.
+function pwGo(s){
+  var i=((history.state&&history.state.i)||0)+1;
+  history.pushState({pw:s,i:i},'');
+  showScreen(s);
+}
 
 function pwDownloadPDF(){
   window.print();
 }
 
-function pwExit(){
-  cur=null;navStack=[];pwStopStillCycle();
+function pwExit(){                                    // Exit (X) / results "home" links → leave the questionnaire
+  var i=(history.state&&history.state.i)||0;
+  if(i>0){history.go(-i);}                            // unwind to the home entry → popstate → pwExitToHome
+  else{pwExitToHome();}
+}
+function pwExitToHome(){                              // restore the home page (no history side-effects)
+  cur=null;pwStopStillCycle();
   document.getElementById('app').innerHTML='';
   document.getElementById('heroBanner').style.display='';
   document.getElementById('homeSections').style.display='';
@@ -511,8 +524,7 @@ function pwExit(){
   window.scrollTo({top:0,behavior:'instant'});
 }
 
-function showScreen(s,push){
-  if(push!==false&&cur)navStack.push(cur);
+function showScreen(s){                               // pure renderer — history is managed by pwGo / popstate
   cur=s;
   document.getElementById('heroBanner').style.display='none';
   document.getElementById('homeSections').style.display='none';
@@ -531,14 +543,20 @@ function showScreen(s,push){
 
 function pwChoose(to){
   if(to==='@reset'){pwStart();return;}
-  if(to.charAt(0)==='@'){showScreen({t:'profile',k:to.slice(1)});return;}
-  showScreen({t:'node',k:to});
+  if(to.charAt(0)==='@'){pwGo({t:'profile',k:to.slice(1)});return;}
+  pwGo({t:'node',k:to});
 }
 
-function pwBack(){
-  if(!navStack.length){pwExit();return;}
-  const prev=navStack.pop();cur=null;showScreen(prev,false);
-}
+function pwBack(){history.back();}                   // on-screen Back → same path as the browser Back button
+
+// Browser Back/Forward: render whatever screen the target entry holds. No pushState here
+// (that would loop). A null/home entry (no .pw) means the user stepped back out to the home page.
+window.addEventListener('popstate',function(e){
+  var st=e.state&&e.state.pw;
+  if(st){showScreen(st);}
+  else if(cur){pwExitToHome();}
+});
+history.replaceState({},'');                          // normalize the landing entry (clears any stale state after a mid-flow reload)
 
 function renderNode(n){
   // ⚠ o.to is interpolated into an inline onclick JS string — routing keys must stay
